@@ -78,7 +78,11 @@ WSGI_APPLICATION = 'Event_driven.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'event-driven-db',
+        'USER': 'event-driven-db-user',
+        'PASSWORD': 'aslaugkaritassolvi',
+        'HOST': '34.142.29.199',
+        'PORT': '5432',
     }
 }
 
