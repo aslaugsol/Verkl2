@@ -3,5 +3,5 @@ from django.shortcuts import render
 
 # Create your views here.
 def start(request):
-    render(request, 'event.html')
+    render(request, 'events/indexx.html')
     #return HttpResponse('EventDriven')
