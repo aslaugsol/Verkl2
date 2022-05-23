@@ -17,6 +17,6 @@ from django.urls import path
 from EventDriven import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
     path('events', views.start, name='start')
 ]
