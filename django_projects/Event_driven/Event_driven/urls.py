@@ -17,5 +17,6 @@ Including another URLconf
 from EventDriven import views
 from django.urls import path
 urlpatterns = [
-    path('events', views.start, name='start')
+    #path('events', views.start, name='start'),
+    path('create_event', views.create_event, name='create_event')
 ]
