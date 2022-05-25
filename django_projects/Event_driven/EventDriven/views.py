@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from EventDriven.forms.event_form import EventCreateForm, EventUpdateForm
 from EventDriven.models import Event
@@ -10,7 +10,17 @@ from EventDriven.models import Event
 #    return render(request, 'events/indexx.html')
 
 def index(request):
-    
+    if 'search_filter' in request.GET:
+        search_filter = request.GET['searc_filter']
+        events = [{
+            'id': x.id,
+            'name': x.name,
+            'category': x.category,
+            #'firstImage': c.eventimage_set.first().image #Þarf að bæta við image model-i
+        } for x in Event.objects.filter(name__icontains=search_filter)]
+        events = list(Event.objects.filter(name__icontains=search_filter).values() )
+        return JsonResponse({ 'data': events})
+
     context = {'events': Event.objects.all().order_by('name')}
     return render(request, 'events/indexx.html', context )
 
