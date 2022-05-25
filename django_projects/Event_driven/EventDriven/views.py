@@ -9,6 +9,9 @@ from EventDriven.models import Event
 #def start(request):
 #    return render(request, 'events/indexx.html')
 
+def index(request):
+    context = {'events': Event.objects.all().order_by('name')}
+    return render(request, 'events/indexx.html', context )
 
 def create_event(request):
     if request.method == 'POST':
