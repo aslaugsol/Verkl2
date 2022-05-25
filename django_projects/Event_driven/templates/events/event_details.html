@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ event.name }}</h1>
+    <p>{{ event.category }}</p>
+    <p>{{ event.price }}</p>
+    <p>Tickets available:{{ event.tickets_available }}/{{ event.max_tickets }}  </p>
+{% endblock %}

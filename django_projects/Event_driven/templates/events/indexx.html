@@ -3,7 +3,7 @@
     <h1 class="red">Events</h1>
     <div class="events">
         {% for event in events %}
-            {% include 'events/single_event.html' %}
+            {% include 'events/single_event.html' with event=event %}
         {% endfor %}
     </div>
 {% endblock %}

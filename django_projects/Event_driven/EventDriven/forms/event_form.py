@@ -4,7 +4,7 @@ from EventDriven.models import Event
 
 
 class EventCreateForm(ModelForm):
-    image = forms.Charfield(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    #image = forms.Charfield(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class meta:
         model = Event
