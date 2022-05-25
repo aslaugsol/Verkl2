@@ -10,6 +10,7 @@ from EventDriven.models import Event
 #    return render(request, 'events/indexx.html')
 
 def index(request):
+    
     context = {'events': Event.objects.all().order_by('name')}
     return render(request, 'events/indexx.html', context )
 
@@ -39,7 +40,10 @@ def delete_event(request, id):
 def update_event(request,id):
     instance = get_object_or_404(Event,pk=id)
     if request == 'POST':
-        print(1)
+        form = EventUpdateForm(data=request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect(request,'event-details', id=id)
     else:
         form = EventUpdateForm(instance=instance)
         print(2)
