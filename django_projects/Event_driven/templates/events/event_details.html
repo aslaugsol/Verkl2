@@ -4,4 +4,7 @@
     <p>{{ event.category }}</p>
     <p>{{ event.price }}</p>
     <p>Tickets available:{{ event.tickets_available }}/{{ event.max_tickets }}  </p>
+
+    <a href="{% url 'update_event_event' event.id %}" class="block btn-primary">Update event</a>
+    <a href="{% url 'delete_event' event.id %}" class="block btn-primary">Delete event</a>
 {% endblock %}

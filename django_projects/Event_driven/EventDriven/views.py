@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from EventDriven.forms.event_form import EventCreateForm
+from EventDriven.forms.event_form import EventCreateForm, EventUpdateForm
 from EventDriven.models import Event
 
 
@@ -28,5 +28,21 @@ def create_event(request):
     else:
         form = EventCreateForm()
         # TODO: Instance new EventCreateForm()
-    return render(request, 'EventDriven/create_event.html',{
+    return render(request, 'events/create_event.html',{
         'form': form })
+
+def delete_event(request, id):
+    event = get_object_or_404(Event, pk= id)
+    event.delete()
+    return redirect('event-index')
+
+def update_event(request,id):
+    instance = get_object_or_404(Event,pk=id)
+    if request == 'POST':
+        print(1)
+    else:
+        form = EventUpdateForm(instance=instance)
+        print(2)
+    return render(request, 'events/update_event.html', {
+        'form': form,
+        'id': id })
