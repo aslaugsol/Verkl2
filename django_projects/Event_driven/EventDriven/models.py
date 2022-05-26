@@ -2,17 +2,29 @@ from django.db import models
 
 # Create your models here.
 
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 class Event(models.Model):
     name = models.CharField(max_length=255)
-    date = models.CharField(max_length=255)
-    category = models.CharField(max_length=255)
+    date = models.DateField()
+    description = models.CharField(max_length=999, blank=True)
+    categoryy = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True)
     price = models.FloatField()
     max_tickets = models.IntegerField()
     tickets_available = models.IntegerField()
 
     def __str__(self):
         return self.name
+
+
+
+class EventImage(models.Model):
+    image = models.CharField(max_length=999)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
 class User(models.Model):
     name = models.CharField(max_length=255)
