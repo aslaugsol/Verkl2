@@ -7,8 +7,9 @@ $(document).ready(function() {
             type: 'GET'
             success: function(resp){
                 var newHtml = resp.data.map(d => {
-                    return '<div class="well event"></div>'
-                })
+                    return '<div class="well event"><a href="/events/${d.id}"><img class="event-img" src="${d.firstImage}"/><h4>${d.name}</h4><p>${d.categoryy}</p></a></div>'
+                });
+                $('.events').html(newHtml.join(''));
             },
             error: function (xhr, status, error){
                 console.error(error);
