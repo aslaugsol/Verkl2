@@ -10,6 +10,7 @@ $(document).ready(function() {
                     return '<div class="well event"><a href="/events/${d.id}"><img class="event-img" src="${d.firstImage}"/><h4>${d.name}</h4><p>${d.categoryy}</p></a></div>'
                 });
                 $('.events').html(newHtml.join(''));
+                $('#search-box').val('');
             },
             error: function (xhr, status, error){
                 console.error(error);
