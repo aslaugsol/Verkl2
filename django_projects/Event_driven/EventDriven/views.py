@@ -20,7 +20,6 @@ def index(request):
         } for x in Event.objects.filter(name__icontains=search_filter)]
         events = list(Event.objects.filter(name__icontains=search_filter).values() )
         return JsonResponse({ 'data': events})
-
     context = {'events': Event.objects.all().order_by('name')}
     return render(request, 'events/indexx.html', context )
 
