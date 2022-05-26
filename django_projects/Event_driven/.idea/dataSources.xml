@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://34.142.29.199:5432/event-driven-db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="event-driven-db@34.142.29.199 [2]" uuid="6224cebc-fbde-4681-8772-a57a21a19d28">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://34.142.29.199:5432/event-driven-db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
