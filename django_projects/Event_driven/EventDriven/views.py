@@ -24,7 +24,7 @@ def index(request):
     return render(request, 'events/indexx.html', context )
 
 def get_event_by_id(request, id):
-    return render(request, 'events/event_detail.html', {
+    return render(request, 'events/event_details.html', {
         'event': get_object_or_404(Event, pk=id)})
 
 def create_event(request):

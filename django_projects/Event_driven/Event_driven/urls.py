@@ -18,7 +18,7 @@ from EventDriven import views
 from django.urls import path
 urlpatterns = [
     path('events', views.index, name='event-index'),
-    path('<int:id>', views.get_event_by_id, name='event-detail'),
+    path('events/<int:id>', views.get_event_by_id, name='event-detail'),
     path('create_event', views.create_event, name='create_event'),
     path('delete_event/<int:id>', views.delete_event, name='delete_event'),
     path('update_event/<int:id>', views.update_event, name='update_event'),
