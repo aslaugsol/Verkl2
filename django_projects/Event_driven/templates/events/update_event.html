@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form class="form form-horizontal" method="post">
+    <form class="form form-horizontal" method="POST">
    {% url 'update_event' id %}
         {% csrf_token %}
     {{ form }}
-    <imput type="submit" value="Update" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0">Add event</imput>
+    <input type="submit" value="Submit" class="btn btn-success" > </input>
     </form>
 {% endblock %}

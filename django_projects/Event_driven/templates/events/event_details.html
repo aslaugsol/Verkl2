@@ -2,7 +2,7 @@
 {% block content %}
     <h1>{{ event.name }}</h1>
     <p>Category: {{ event.categoryy_id }}</p>
-    <p>Price:{{ event.price }}</p>
+    <p>Price:{{ event.price }}$</p>
     <p>Tickets available:{{ event.tickets_available }}/{{ event.max_tickets }}  </p>
 
     <a href="{% url 'update_event' event.id %}" class="block btn-primary">Update event</a>

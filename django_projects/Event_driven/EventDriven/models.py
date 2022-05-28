@@ -12,7 +12,7 @@ class Event(models.Model):
     name = models.CharField(max_length=255)
     date = models.DateField()
     description = models.CharField(max_length=999, blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True)
+    categoryy = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True)
     price = models.FloatField()
     max_tickets = models.IntegerField()
     tickets_available = models.IntegerField()
@@ -27,7 +27,7 @@ class EventImage(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    favorite_category = models.ForeignKey(Category, on_delete=CASCADE)
+    favorite_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     profile_photo = models.CharField(max_length=255)
 
 
