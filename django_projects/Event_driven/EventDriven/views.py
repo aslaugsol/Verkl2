@@ -2,6 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from EventDriven.forms.event_form import EventCreateForm, EventUpdateForm
 from EventDriven.models import Event
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -59,3 +60,8 @@ def update_event(request,id):
     return render(request, 'events/update_event.html', {
         'form': form,
         'id': id })
+
+@login_required
+def user_profile(request):
+    return render(request, 'user_profile.html', {'user': request.user})
+#redirectar á /accounts/profile
