@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Category(models.Model):
@@ -12,7 +12,7 @@ class Event(models.Model):
     name = models.CharField(max_length=255)
     date = models.DateField()
     description = models.CharField(max_length=999, blank=True)
-    categoryy = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True)
     price = models.FloatField()
     max_tickets = models.IntegerField()
     tickets_available = models.IntegerField()
@@ -21,18 +21,15 @@ class Event(models.Model):
         return self.name
 
 
-
 class EventImage(models.Model):
     image = models.CharField(max_length=999)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
-class User(models.Model):
-    name = models.CharField(max_length=255)
-    favorites = models.CharField(max_length=255)
-    profile_photo = models.CharField(max_length=9999)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    favorite_category = models.ForeignKey(Category, on_delete=CASCADE)
+    profile_photo = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.name
 
 class Admin(models.Model):
     name = models.CharField(max_length=255)
