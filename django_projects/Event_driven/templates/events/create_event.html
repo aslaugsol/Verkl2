@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form class="form form-horizontal" method="post">
+    {% if submitted %}
+        Event was successfully submitted !
+    {% else %}
+
+    <form class="form form-horizontal" method="POST">
    {% url 'create_event' %}
         {% csrf_token %}
     {{ form }}
-    <imput type="submit" value="Create" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0">Add event</imput>
+    <imput type="submit" value="Submit" class="btn btn-success" style="clear:both; margin: 10px 0">Add event</imput>
     </form>
+    {% endif %}
 {% endblock %}

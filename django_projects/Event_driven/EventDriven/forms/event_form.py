@@ -27,6 +27,7 @@ class EventCreateForm(ModelForm):
         widgets = {
             'name': widgets.TextInput(attrs={'class': 'form-control'}),
             'date': widgets.DateInput(attrs={'class': 'form-control'}),
+            'description': widgets.TextInput(attrs={'class': 'form-control'}),
             'category': widgets.TextInput(attrs={'class': 'form-control'}), #Select(attrs={'class': 'form-control'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control'}),
             'max_tickets': widgets.NumberInput(attrs={'class': 'form-control'}),

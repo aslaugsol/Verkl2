@@ -1,4 +1,4 @@
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from EventDriven.forms.event_form import EventCreateForm, EventUpdateForm
 from EventDriven.models import Event
@@ -11,7 +11,7 @@ from EventDriven.models import Event
 
 def index(request):
     if 'search_filter' in request.GET:
-        search_filter = request.GET['searc_filter']
+        search_filter = request.GET['search_filter']
         events = [{
             'id': x.id,
             'name': x.name,
@@ -28,15 +28,20 @@ def get_event_by_id(request, id):
         'event': get_object_or_404(Event, pk=id)})
 
 def create_event(request):
+    submitted = False;
     if request.method == 'POST':
-        form = EventCreateForm(data=request.POST)
+        form = EventCreateForm(request.POST)
+        print(1)
         if form.is_valid():
-             event = form.save()
-             event_img = EventImage(image=request.POST['image'], event=event)
-             event_img.save()
-             return redirect('event-index')
+            print(2)
+            form.save()
+            #event_img = EventImage(image=request.POST['image'], event=event)
+            # event_img.save()
+            return HttpResponseRedirect('/create_event?submitted=True')
     else:
         form = EventCreateForm()
+        if 'submitted' in request.GET:
+            submitted = True;
         # TODO: Instance new EventCreateForm()
     return render(request, 'events/create_event.html',{
         'form': form })
