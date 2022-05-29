@@ -4,8 +4,6 @@ from EventDriven.forms.event_form import EventCreateForm, EventUpdateForm
 from EventDriven.models import Event
 from django.contrib.auth.decorators import login_required
 
-
-
 # Create your views here.
 #def start(request):
 #    return render(request, 'events/indexx.html')
@@ -20,7 +18,7 @@ def index(request):
             #'firstImage': c.eventimage_set.first().image #Þarf að bæta við image model-i
         } for x in Event.objects.filter(name__icontains=search_filter)]
         events = list(Event.objects.filter(name__icontains=search_filter).values() )
-        return JsonResponse({ 'data': events})
+        return JsonResponse({'data': events})
     context = {'events': Event.objects.all().order_by('name')}
     return render(request, 'events/indexx.html', context )
 
@@ -42,7 +40,7 @@ def create_event(request):
     else:
         form = EventCreateForm()
         if 'submitted' in request.GET:
-            submitted = True;
+            submitted = True
         # TODO: Instance new EventCreateForm()
     return render(request, 'events/create_event.html',{
         'form': form })
