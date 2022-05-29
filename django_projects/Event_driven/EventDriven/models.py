@@ -25,10 +25,6 @@ class EventImage(models.Model):
     image = models.CharField(max_length=999)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    favorite_category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    profile_photo = models.CharField(max_length=255)
 
 
 class Admin(models.Model):
