@@ -79,13 +79,17 @@ def BookEvent(request):
         if request.user.is_authenticated:
             ev_id = int(request.POST.get('event_id'))
             event_check = Event.objects.get(id=ev_id)
-            if(event_check):
-                if(Cart.objects.filter(user=request.user.id, event_id=ev_id)):
+            if not event_check:
+                return JsonResponse({'status':"Event not found."})
+
+            else:
+                if Cart.objects.filter(user=request.user.id, event_id=ev_id):
                     return JsonResponse({'status: Event already selected for booking.'})
                 else:
                     ticket_quantity = int(request.POST.get('ticket_qty'))
-            else:
-                return JsonResponse({'status':"Event not found."})
+                    if (event_check.quantity >= ticket_quantity):
+                        Cart.objects.create(user=request.user, event_id=ev_id, limited_integer_field=ticket_quantity, )
+
 
         else:
             return JsonResponse({'status':"Log in to continue!"})
