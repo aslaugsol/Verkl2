@@ -83,7 +83,7 @@ def BookEvent(request):
                 if(Cart.objects.filter(user=request.user.id, event_id=ev_id)):
                     return JsonResponse({'status: Event already selected for booking.'})
                 else:
-                    ticket_quantity =  int(request.POST.get('ticket_qty'))
+                    ticket_quantity = int(request.POST.get('ticket_qty'))
             else:
                 return JsonResponse({'status':"Event not found."})
 
