@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for category in categories %}
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value={{category}}>
+        <div class="input-group-btn">
+            {% endfor %}
+            <button type="submit" id="checkbox-btn" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+
+{% endblock %}

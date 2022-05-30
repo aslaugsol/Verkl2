@@ -64,6 +64,12 @@ def update_event(request,id):
         'form': form,
         'id': id })
 
+def checkbox_filter(request):
+
+
+
+    return render(request, 'events/checkbox.html')
+
 #@login_required
 #def user_profile(request):
 #    return render(request, 'user_profile.html', {'user': request.user})
