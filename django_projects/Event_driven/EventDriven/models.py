@@ -1,6 +1,9 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
+from Event_driven import settings
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -26,7 +29,6 @@ class EventImage(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
 
-
 class Admin(models.Model):
     name = models.CharField(max_length=255)
 
@@ -43,8 +45,12 @@ class Tickets(models.Model):
 
 class Cart(models.Model):
     event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
-    event_name = models.CharField(max_length=255)
+    quantity = models.IntegerField(null=False,blank=False, validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+        ])
     total_price = models.FloatField()
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Credentials(models.Model):
     email = models.CharField(max_length=255)
