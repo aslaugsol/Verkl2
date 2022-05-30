@@ -5,6 +5,19 @@
     <p>Price:{{ event.price }}$</p>
     <p>Tickets available:{{ event.tickets_available }}/{{ event.max_tickets }}  </p>
 
+
+    <div class="col-md-3">
+    {% csrf_token %}
+        <input type="hidden" value="{{ event.id }}" class="event_id">
+        <label for="quantity">Quantity</label>
+        <div class="input-group text-center mb-3" style="width: 130px">
+            <button class="input-group-text decrement-btn">-</button>
+            <input type="text" name="quantity" class="form-control qty-input text-center" value="1">
+            <button class="input-group-text increment-btn">-</button>
+        </div>
+        <button type="button" class="btn btn-primary me-3 float-start BookEventBtn">Add to cart</button>
+    </div>
     <a href="{% url 'update_event' event.id %}" class="block btn-primary">Update event</a>
     <a href="{% url 'delete_event' event.id %}" class="block btn-primary">Delete event</a>
+
 {% endblock %}
