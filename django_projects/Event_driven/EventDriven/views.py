@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from EventDriven.forms.event_form import EventCreateForm, EventUpdateForm
-from EventDriven.models import Event
+from EventDriven.models import Event, Category
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -19,8 +19,8 @@ def index(request):
         } for x in Event.objects.filter(name__icontains=search_filter)]
         events = list(Event.objects.filter(name__icontains=search_filter).values() )
         return JsonResponse({'data': events})
-    context = {'events': Event.objects.all().order_by('name')}
-    return render(request, 'events/indexx.html', context )
+    context = {'events': Event.objects.all().order_by('name'), 'categories': Category.objects.all()}
+    return render(request, 'events/indexx.html', context)
 
 def get_event_by_id(request, id):
     return render(request, 'events/event_details.html', {
@@ -64,11 +64,6 @@ def update_event(request,id):
         'form': form,
         'id': id })
 
-def checkbox_filter(request):
-
-
-
-    return render(request, 'events/checkbox.html')
 
 #@login_required
 #def user_profile(request):
