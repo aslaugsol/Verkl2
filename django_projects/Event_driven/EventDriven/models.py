@@ -44,8 +44,8 @@ class Tickets(models.Model):
 
 class Cart(models.Model):
     event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
-    #quantity
     total_price = models.FloatField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Credentials(models.Model):
     email = models.CharField(max_length=255)
