@@ -47,9 +47,8 @@ class Tickets(models.Model):
 
 class Cart(models.Model):
     event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
-    total_price = models.FloatField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    limited_integer_field = models.IntegerField(
+    total_tickets = models.IntegerField(
         default=1,
         validators=[
             MaxValueValidator(10),
