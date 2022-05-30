@@ -13,7 +13,8 @@ class Category(models.Model):
 
 class Event(models.Model):
     name = models.CharField(max_length=255)
-    date = models.DateField()
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
     description = models.CharField(max_length=999, blank=True)
     categoryy = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True)
     price = models.FloatField()
