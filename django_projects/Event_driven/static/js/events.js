@@ -38,6 +38,10 @@ $(document).ready(function() {
                 'event_id': event_id,
                 'ticket_qty': ticket_qty,
                 csrfmiddlewaretoken: token
+            },
+            success: function (response) {
+                console.log(response)
+                alert.success(response.status)
             }
             }
 

@@ -87,9 +87,11 @@ def BookEvent(request):
                     return JsonResponse({'status: Event already selected for booking.'})
                 else:
                     ticket_quantity = int(request.POST.get('ticket_qty'))
-                    if (event_check.quantity >= ticket_quantity):
-                        Cart.objects.create(user=request.user, event_id=ev_id, limited_integer_field=ticket_quantity, )
-
+                    if event_check.tickets_available >= ticket_quantity:
+                        Cart.objects.create(user=request.user, event_id=ev_id, total_tickets=ticket_quantity)
+                        return JsonResponse({'status':"Event selected for booking"})
+                    else:
+                        return JsonResponse({'status': "Eitthvað ekki rétt"})
 
         else:
             return JsonResponse({'status':"Log in to continue!"})
