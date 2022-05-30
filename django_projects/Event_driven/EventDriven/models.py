@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
@@ -27,29 +28,40 @@ class EventImage(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
 
-
 class Admin(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
 
+
 class Address(models.Model):
     zip = models.IntegerField()
     city = models.CharField(max_length=255)
+
 
 class Tickets(models.Model):
     event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
     name_on_ticket = models.ForeignKey(User, on_delete=models.CASCADE)
 
+
 class Cart(models.Model):
     event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
     total_price = models.FloatField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    limited_integer_field = models.IntegerField(
+        default=1,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+        ]
+     )
+
 
 class Credentials(models.Model):
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
+
 
 class PaymentInfo(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
