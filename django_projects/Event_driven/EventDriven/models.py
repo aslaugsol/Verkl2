@@ -10,8 +10,8 @@ class Category(models.Model):
 
 class Event(models.Model):
     name = models.CharField(max_length=255)
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    #start_date = models.DateTimeField()
+    #end_date = models.DateTimeField()
     description = models.CharField(max_length=999, blank=True)
     categoryy = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True)
     price = models.FloatField()
@@ -44,7 +44,7 @@ class Tickets(models.Model):
 
 class Cart(models.Model):
     event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
-    event_name = models.CharField(max_length=255)
+    #quantity
     total_price = models.FloatField()
 
 class Credentials(models.Model):
