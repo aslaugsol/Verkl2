@@ -23,5 +23,6 @@ urlpatterns = [
     path('delete_event/<int:id>', views.delete_event, name='delete_event'),
     path('update_event/<int:id>', views.update_event, name='update_event'),
     path('user/', include('user.urls')),
+    #path('events/search_event', views.index, name='search_event')
     #path("/book-tickets",)
 ]

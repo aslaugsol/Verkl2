@@ -8,19 +8,23 @@ from django.contrib.auth.decorators import login_required
 #def start(request):
 #    return render(request, 'events/indexx.html')
 
+
 def index(request):
     if 'search_filter' in request.GET:
         search_filter = request.GET['search_filter']
+        print(search_filter)
         events = [{
             'id': x.id,
             'name': x.name,
-            'category': x.category,
+            'category': x.categoryy,
             #'firstImage': c.eventimage_set.first().image #Þarf að bæta við image model-i
         } for x in Event.objects.filter(name__icontains=search_filter)]
-        events = list(Event.objects.filter(name__icontains=search_filter).values() )
+        events = list(Event.objects.filter(name__icontains=search_filter).values())
+        print(events)
         return JsonResponse({'data': events})
     context = {'events': Event.objects.all().order_by('name'), 'categories': Category.objects.all()}
     return render(request, 'events/indexx.html', context)
+
 
 def get_event_by_id(request, id):
     return render(request, 'events/event_details.html', {
