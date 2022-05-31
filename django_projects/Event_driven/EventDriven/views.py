@@ -83,27 +83,27 @@ def checkbox_filter(request):
     return render(request, 'events/checkbox.html')
 
 
-def book_event(request):
+def book_event(request, id):
     if request.method == 'POST':
-        #if request.user.is_authenticated:
-            #ev_id = int(request.POST.get('event_id'))
-        event_check = Event.objects.get(id=id)
-        if not event_check:
-            return JsonResponse({'status': "Event not found."})
+        if request.user.is_authenticated:
+            ev_id = int(request.POST.get('event_id'))
+            event_check = Event.objects.get(id=id)
+            if not event_check:
+                return JsonResponse({'status': "Event not found."})
+
+            else:
+                if Cart.objects.filter(user=request.user.id, event_id=id):
+                    return JsonResponse({'status: Event already selected for booking.'})
+                else:
+                    ticket_quantity = int(request.POST.get('ticket_qty'))
+                    if event_check.tickets_available >= ticket_quantity:
+                        Cart.objects.create(user=request.user, event_id=id, total_tickets=ticket_quantity)
+                        return JsonResponse({'status': "Event selected for booking"})
+                    else:
+                        return JsonResponse({'status': "Eitthvað ekki rétt"})
 
         else:
-            if Cart.objects.filter(user=request.user.id, event_id=id):
-                return JsonResponse({'status: Event already selected for booking.'})
-            else:
-                ticket_quantity = int(request.POST.get('ticket_qty'))
-                if event_check.tickets_available >= ticket_quantity:
-                    Cart.objects.create(user=request.user, event_id=id, total_tickets=ticket_quantity)
-                    return JsonResponse({'status': "Event selected for booking"})
-                else:
-                    return JsonResponse({'status': "Eitthvað ekki rétt"})
-
-    else:
-        return JsonResponse({'status': "Log in to continue!"})
+            return JsonResponse({'status': "Log in to continue!"})
 
     return redirect('/events')
 
