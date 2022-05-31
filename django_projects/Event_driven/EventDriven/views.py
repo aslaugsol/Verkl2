@@ -35,7 +35,7 @@ def get_event_by_id(request, id):
 def get_similar_events(id):
     this_event = Event.objects.get(id=id)
     category = this_event.categoryy
-    return Event.objects.filter(categoryy=category)
+    return Event.objects.filter(categoryy=category).exclude(id=id)
 
 
 def create_event(request):
