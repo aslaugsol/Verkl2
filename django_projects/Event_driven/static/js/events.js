@@ -6,8 +6,8 @@ $(document).ready(function() {
             url:'/events?search_filter=' + SearchText,
             type: 'GET',
             success: function(response) {
-                console.log(response.data)
-                $('.events').html(newHtml.join(''));
+                console.log(response.data.name)
+                //$('.events').html(newHtml.join(''));
                 $('#search-box').val('');
             }
         })
