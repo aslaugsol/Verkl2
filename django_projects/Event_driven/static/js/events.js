@@ -6,9 +6,7 @@ $(document).ready(function() {
             url:'/events?search_filter=' + SearchText,
             type: 'GET',
             success: function(response) {
-                let newHtml = response.data.map(d => {
-                    return '<div class="well event"><a href="/events/${d.id}"><h4>${"d.name"}</h4><p>${"d.categoryy"}</p></a></div>'
-                });
+                console.log(response.data)
                 $('.events').html(newHtml.join(''));
                 $('#search-box').val('');
             }
