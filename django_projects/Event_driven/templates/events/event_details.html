@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>{{ event.name }}</h1>
+    <p>Description: {{ event.description }}</p>
     <p>Category: {{ event.categoryy }}</p>
+    <p>Image: {{ event.image }}</p>
+    <p>Location: {{ event.location }}</p>
+    <p>Starts: {{ event.start_date }}</p>
+    <p>Ends: {{ event.end_date }}</p>
     <p>Price:{{ event.price }}$</p>
     <p>Tickets available:{{ event.tickets_available }}/{{ event.max_tickets }}  </p>
+    <p>List of similar events: {% for event in similar_events %} {{ event }} {% endfor %}</p>
 
 
     <div class="col-md-3">

@@ -18,8 +18,8 @@ class Event(models.Model):
     price = models.FloatField()
     max_tickets = models.IntegerField()
     tickets_available = models.IntegerField()
-    image = models.CharField(max_length=9999,default='')
-    location = models.CharField(max_length=255,default='Unknown')
+    image = models.CharField(max_length=9999, default='')
+    location = models.CharField(max_length=255, default='Unknown')
 
 
     def __str__(self):
