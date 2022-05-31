@@ -24,7 +24,7 @@ $(document).ready(function() {
         var token = $('input[name=csrfmiddlewaretoken]').val();
         $.ajax({
             method: "POST",
-            url: "/book-tickets",
+            url: "/events/"+ event_id + "/book-tickets",
             data: {
                 'event_id': event_id,
                 'ticket_qty': ticket_qty,
