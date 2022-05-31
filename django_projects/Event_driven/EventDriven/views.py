@@ -83,7 +83,7 @@ def checkbox_filter(request):
     return render(request, 'events/checkbox.html')
 
 
-def book_event(request, id):
+def book_event(request):
     if request.method == 'POST':
         #if request.user.is_authenticated:
             #ev_id = int(request.POST.get('event_id'))
