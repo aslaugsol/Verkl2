@@ -5,5 +5,6 @@ from EventDriven.models import Category
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, default='Name')
     favorite_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     profile_photo = models.CharField(max_length=9999)
