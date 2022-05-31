@@ -107,6 +107,7 @@ def BookEvent(request):
 
     return redirect('/events')
 
+
 # @login_required
 # def user_profile(request):
 #    return render(request, 'user_profile.html', {'user': request.user})
