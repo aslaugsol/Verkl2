@@ -28,8 +28,14 @@ def index(request):
 
 
 def get_event_by_id(request, id):
+    list_of_similar_events = get_similar_events(id)
     return render(request, 'events/event_details.html', {
-        'event': get_object_or_404(Event, pk=id)})
+        'event': get_object_or_404(Event, pk=id),'similar_events': list_of_similar_events})
+
+def get_similar_events(id):
+    this_event = Event.objects.get(id=id)
+    category = this_event.categoryy
+    return Event.objects.filter(categoryy=category).exclude(id=id)
 
 
 def create_event(request):
