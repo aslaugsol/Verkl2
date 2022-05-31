@@ -29,7 +29,11 @@ for (i = 0; i < Bookingbtn.length ; i++){
         var action = this.dataset.action
         console.log('EventId: ' , eventID , 'Action: ', action)
 
-        console.log('USER:',
-            user)
+        console.log('USER:', user)
+        if(user === 'AnonymousUser'){
+            console.log('Not logged in!')
+        }else{
+            console.log('User is logged in, sending data')
+        }
     })
 }
