@@ -3,7 +3,8 @@
     <h1>{{ event.name }}</h1>
     <p>Description: {{ event.description }}</p>
     <p>Category: {{ event.categoryy }}</p>
-    <p>Image: {{ event.image }}</p>
+    <p>Image:</p>
+    <img src="{{ event.image }}" class="profile-image"/>
     <p>Location: {{ event.location }}</p>
     <p>Starts: {{ event.start_date }}</p>
     <p>Ends: {{ event.end_date }}</p>
