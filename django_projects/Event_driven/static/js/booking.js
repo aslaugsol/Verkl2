@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $('.BookEventBtn').click(function (e) {
             e.preventDefault();
-
             const event_id = $('.event_id').val();
             const ticket_qty = $('.qty-input').val();
             var token = $('input[name=csrfmiddlewaretoken]').val();
