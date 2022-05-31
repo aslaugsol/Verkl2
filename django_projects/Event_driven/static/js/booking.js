@@ -22,4 +22,14 @@
     //)
 //});
 
-console.log('Booking')
+var Bookingbtn = document.getElementsByClassName('BookEventBtn')
+for (i = 0; i < Bookingbtn.length ; i++){
+    Bookingbtn[i].addEventListener('click', function (){
+        var eventID = this.dataset.event
+        var action = this.dataset.action
+        console.log('EventId: ' , eventID , 'Action: ', action)
+
+        console.log('USER:',
+            user)
+    })
+}
