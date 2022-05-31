@@ -9,11 +9,13 @@ $(document).ready(function() {
                 var newHTML = response.data.map(d => {
                     return '<div class="well event">\n' +
                         '    <a href="/events/${d.id}">\n' +
-                        '        <img class="event-img" src="{{ d.image }}">\n' +
-                        '        <h4>{{ d.name }}</h4>\n' +
-                        '        <p>{{ d.categoryy }}</p>\n' +
+                        '        <img class="event-img" src="${ d.image }">\n' +
+                        '        <h4>${ d.name }</h4>\n' +
+                        '        <p>${ d.categoryy }</p>\n' +
                         '    </a>\n' +
                         '</div>'
+                    $('.events').html(newHTML.join(''));
+                    $('#search-bar').val('');
                 })
             },
             error : function (xhr, status, error) {
