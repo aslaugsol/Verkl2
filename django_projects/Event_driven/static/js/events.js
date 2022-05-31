@@ -6,9 +6,18 @@ $(document).ready(function() {
             url:'/events?search_filter=' + SearchText,
             type: 'GET',
             success: function(response) {
-                console.log(response.data.name)
-                //$('.events').html(newHtml.join(''));
-                $('#search-box').val('');
+                var newHTML = response.data.map(d => {
+                    return '<div class="well event">\n' +
+                        '    <a href="/events/${d.id}">\n' +
+                        '        <img class="event-img" src="{{ d.image }}">\n' +
+                        '        <h4>{{ d.name }}</h4>\n' +
+                        '        <p>{{ d.categoryy }}</p>\n' +
+                        '    </a>\n' +
+                        '</div>'
+                })
+            },
+            error : function (xhr, status, error) {
+                console.error(error);
             }
         })
 
