@@ -7,7 +7,7 @@ $(document).ready(function() {
             var token = $('input[name=csrfmiddlewaretoken]').val();
             $.ajax({
                     method: "POST",
-                    url: "/events/" + event_id + "/book-tickets",
+                    url: "/book-tickets/" + event_id ,
                     data: {
                         'event_id': event_id,
                         'ticket_qty': ticket_qty,
