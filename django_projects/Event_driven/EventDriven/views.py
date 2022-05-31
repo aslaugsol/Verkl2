@@ -13,15 +13,15 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     if 'search_filter' in request.GET:
         search_filter = request.GET['search_filter']
-        print(search_filter)
+        #print(search_filter)
         events = [{
             'id': x.id,
             'name': x.name,
             'category': x.categoryy,
             # 'firstImage': c.eventimage_set.first().image #Þarf að bæta við image model-i
-        } for x in Event.objects.filter(name__icontains=search_filter)]
+        } for x in Event.objects.all().filter(name__icontains=search_filter)]
         events = list(Event.objects.filter(name__icontains=search_filter).values())
-        print(events)
+        #print(events)
         return JsonResponse({'data': events})
     context = {'events': Event.objects.all().order_by('name'), 'categories': Category.objects.all()}
     return render(request, 'events/indexx.html', context)
