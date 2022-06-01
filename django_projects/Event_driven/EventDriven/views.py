@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from EventDriven.forms.event_form import EventCreateForm, EventUpdateForm
-from EventDriven.models import Event, Category, Booking, BookingItem
+from EventDriven.models import Event, Category, Booking, BookingItem, Customer
 import json
 from django.contrib.auth.decorators import login_required
 
@@ -87,7 +87,7 @@ def checkbox_filter(request):
 
 def booking(request):
     if request.user.is_authenticated:
-        user = request.
+        user = request.user.customer
         booking_, created = Booking.objects.get_or_create(user=user, complete=False)
         event = booking.bookingitem_set.all()
         bookingItem = booking_.get_events
