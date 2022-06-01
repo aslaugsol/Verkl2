@@ -87,9 +87,9 @@ def checkbox_filter(request):
 
 def booking(request):
     if request.user.is_authenticated:
-        user = request.user.customer
-        booking_, created = Booking.objects.get_or_create(user=user, complete=False)
-        event = booking.bookingitem_set.all()
+        customer = request.user
+        booking_, created = Booking.objects.get_or_create(customer=customer, complete=False)
+        event = booking_.bookingitem_set.all()
         bookingItem = booking_.get_events
     else:
         event = ['']
