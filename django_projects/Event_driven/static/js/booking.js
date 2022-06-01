@@ -23,12 +23,11 @@
 //});
 
 var Bookingbtn = document.getElementsByClassName('BookEventBtn')
-for (i = 0; i < Bookingbtn.length ; i++){
+for (let i = 0; i < Bookingbtn.length ; i++){
     Bookingbtn[i].addEventListener('click', function (){
         var eventID = this.dataset.event
         var action = this.dataset.action
         console.log('EventId: ' , eventID , 'Action: ', action)
-
         console.log('USER:', user)
         if(user === 'AnonymousUser'){
             console.log('Not logged in!')
@@ -40,11 +39,12 @@ for (i = 0; i < Bookingbtn.length ; i++){
 
 function UserSelectedBooking(eventID, action) {
     console.log('User is logged in, sending data..')
-    var url = '/event_booking/'
-    fetch(url, {
+    let url = '/event_booking'
+    fetch( url, {
         method:'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
             'X-CSRFToken': csrftoken
         },
         body:JSON.stringify({
