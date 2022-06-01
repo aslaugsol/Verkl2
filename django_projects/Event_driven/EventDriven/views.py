@@ -89,6 +89,12 @@ def booking(request):
 
     if request.user.is_authenticated:
         user = request.user.id
+        booking, created = Booking.objects.get_or_create(user=customer, complete=False)
+        event = booking.bookingitem_set.all()
+    else:
+        event = [ ]
+    context = {'event': event}
+    return render(request, 'events.booking.html', context)
 
 def booking_selected(request):
     data = json.load(request.data)
