@@ -86,15 +86,20 @@ def checkbox_filter(request):
 
 
 def booking(request):
-
     if request.user.is_authenticated:
         user = request.user.id
-        booking, created = Booking.objects.get_or_create(user=customer, complete=False)
+        booking_, created = Booking.objects.get_or_create(user=user, complete=False)
         event = booking.bookingitem_set.all()
     else:
         event = ['']
+        booking_ = ['']
     context = {'event': event}
-    return render(request, 'events.booking.html', context)
+    return render(request, 'events/booking.html', context)
+
+
+def checkout(request):
+    context = {}
+    return render(request, 'events/checkout.html', context)
 
 def booking_selected(request):
     data = json.load(request.data)

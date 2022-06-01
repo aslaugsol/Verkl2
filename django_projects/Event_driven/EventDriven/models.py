@@ -93,5 +93,9 @@ class BookingItem(models.Model):
     @property
     def get_total(self):
         total = self.event.price * self.quantity
-        retur total
+        return total
+
+    @property
+    def get_events(self):
+        event = self.bookingitem_set.all()
 

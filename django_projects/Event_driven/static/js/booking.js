@@ -41,7 +41,7 @@ for (i = 0; i < Bookingbtn.length ; i++){
 function UserSelectedBooking(eventID, action) {
     console.log('User is logged in, sending data..')
     var url = '/event_booking/'
-    fetch(url, {
+    fetch( url, {
         method:'POST',
         headers: {
             'Content-Type': 'application/json',
