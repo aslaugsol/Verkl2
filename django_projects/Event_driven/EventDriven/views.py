@@ -90,10 +90,13 @@ def booking(request):
         user = request.user.id
         booking_, created = Booking.objects.get_or_create(user=user, complete=False)
         event = booking.bookingitem_set.all()
+        bookingItem = booking_.get_events
     else:
         event = ['']
-        booking_ = ['']
-    context = {'event': event}
+        booking_ = {'get_total':0, 'get_events':0}
+        bookingItem = booking_.get_events
+
+    context = {'event': event, 'booking': booking_, 'bookingItem': bookingItem}
     return render(request, 'events/booking.html', context)
 
 

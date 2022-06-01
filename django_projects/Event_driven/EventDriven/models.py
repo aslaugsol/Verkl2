@@ -79,6 +79,12 @@ class Booking(models.Model):
     def __str__(self):
         return str(self.id)
 
+    @property
+    def get_events(self):
+        event = self.bookingitem_set.all()
+        total = sum(item.quantity for item in event)
+        return total
+
 
 class BookingItem(models.Model):
     event = models.ForeignKey(Event, on_delete=models.SET_NULL, blank=True, null=True)
@@ -95,7 +101,5 @@ class BookingItem(models.Model):
         total = self.event.price * self.quantity
         return total
 
-    @property
-    def get_events(self):
-        event = self.bookingitem_set.all()
+
 
