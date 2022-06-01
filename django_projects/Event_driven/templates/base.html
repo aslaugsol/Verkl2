@@ -108,6 +108,6 @@
 const csrftoken = getCookie('csrftoken');
 
 </script>
-<script type="text/javascript"> var user = {{ request.user }}</script>
+<script type="text/javascript"> var user = '{{ request.user }}' </script>
 </body>
 </html>
