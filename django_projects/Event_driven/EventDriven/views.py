@@ -82,7 +82,8 @@ def update_event(request, id):
 
 
 def checkbox_filter(request):
-    return render(request, 'events/checkbox.html')
+    selected_values = request.POST.getlist('category')
+    return render(request, 'events/checkbox.html', {})
 
 
 def booking(request):
