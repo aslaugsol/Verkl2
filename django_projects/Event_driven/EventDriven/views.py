@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     if 'search_filter' in request.GET:
         search_filter = request.GET['search_filter']
-        #print(search_filter)
+        # print(search_filter)
         events = [{
             'id': x.id,
             'name': x.name,
@@ -22,7 +22,7 @@ def index(request):
             # 'firstImage': c.eventimage_set.first().image #Þarf að bæta við image model-i
         } for x in Event.objects.all().filter(name__icontains=search_filter)]
         events = list(Event.objects.filter(name__icontains=search_filter).values())
-        #print(events)
+        # print(events)
         return JsonResponse({'data': events})
     context = {'events': Event.objects.all().order_by('name'), 'categories': Category.objects.all()}
     return render(request, 'events/indexx.html', context)
@@ -31,7 +31,8 @@ def index(request):
 def get_event_by_id(request, id):
     list_of_similar_events = get_similar_events(id)
     return render(request, 'events/event_details.html', {
-        'event': get_object_or_404(Event, pk=id),'similar_events': list_of_similar_events})
+        'event': get_object_or_404(Event, pk=id), 'similar_events': list_of_similar_events})
+
 
 def get_similar_events(id):
     this_event = Event.objects.get(id=id)
@@ -84,29 +85,7 @@ def checkbox_filter(request):
     return render(request, 'events/checkbox.html')
 
 
-def book_event(request, id):
-    if request.method == 'POST':
-        if request.user.is_authenticated:
-            ev_id = int(request.POST.get('event_id'))
-            event_check = Event.objects.get(id=id)
-            if not event_check:
-                return JsonResponse({'status': "Event not found."})
 
-            else:
-                if Cart.objects.filter(user=request.user.id, event_id=id):
-                    return JsonResponse({'status: Event already selected for booking.'})
-                else:
-                    ticket_quantity = int(request.POST.get('ticket_qty'))
-                    if event_check.tickets_available >= ticket_quantity:
-                        Cart.objects.create(user=request.user, event_id=id, total_tickets=ticket_quantity)
-                        return JsonResponse({'status': "Event selected for booking"})
-                    else:
-                        return JsonResponse({'status': "Eitthvað ekki rétt"})
-
-        else:
-            return JsonResponse({'status': "Log in to continue!"})
-
-    return redirect('/events')
 
 def booking_selected(request):
     data = json.load(request.data)
