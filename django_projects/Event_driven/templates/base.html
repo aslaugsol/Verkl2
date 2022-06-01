@@ -9,7 +9,8 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<script type="text/javascript">
+<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  <script type="text/javascript">
     var user = '{{ request.user }}'
 function getToken(name) {
     let cookieValue = null;
@@ -40,32 +41,19 @@ const csrftoken = getToken('csrftoken');
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">EventDriven</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
+        <li class="navbar-brand">About Us</li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="search" class="form-control" id="search-box" placeholder="Enter your search here...">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="button" id="search-btn" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
 
@@ -75,13 +63,13 @@ const csrftoken = getToken('csrftoken');
         {% else %}
           <li><a href="{% url 'login' %}">Login</a></li>
           <li><a href="{% url 'register' %}">Register</a></li>
-
         {% endif %}
-      </ul>
-
-      {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
         <img src="{{ user.profile.profile_photo }}" class="profile-image"/>
       {% endif %}
+      </ul>
+
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
