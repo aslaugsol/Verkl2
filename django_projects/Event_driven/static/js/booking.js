@@ -47,12 +47,12 @@ function UserSelectedBooking(eventID, action) {
             'Content-Type': 'application/json'
         },
         body:JSON.stringify({
-             'eventID':eventID, 'action':action
+             'eventID': eventID, 'action':action
         })
     }).then((response)=> {
         return response.json()
     })
     .then((data)=> {
-        console.log
+        console.log('data', data)
     })
 }
