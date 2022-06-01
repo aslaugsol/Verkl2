@@ -86,17 +86,17 @@ def checkbox_filter(request):
 
 
 def booking(request):
-    if request.user.is_authenticated:
-        customer = request.user
-        booking_, created = Booking.objects.get_or_create(customer=customer, complete=False)
-        event = booking_.bookingitem_set.all()
-        bookingItem = booking_.get_events
-    else:
-        event = ['']
-        booking_ = {'get_total':0, 'get_events':0}
-        bookingItem = booking_.get_events
+    #if request.user.is_authenticated:
+    customer = request.user
+    booking_, created = Booking.objects.get_or_create(customer=customer, complete=False)
+    event = booking_.bookingitem_set.all()
+    bookingItem = booking_.get_events
+    #else:
+        #event = ['']
+        #booking_ = {'get_total':0, 'get_events':0}
+        #bookingItem = booking_.get_events
 
-    context = {'event': event, 'booking': booking_, 'bookingItem': bookingItem}
+    context = {'event': event}#, 'booking': booking_, 'bookingItem': bookingItem}
     return render(request, 'events/booking.html', context)
 
 
@@ -113,14 +113,13 @@ def booking_selected(request):
 
     customer = request.user.id
     event = Event.objects.get(id=event_id)
-    booking, created = Booking.objects.get_or_create(user=customer, complete=False)
+    booking_, created = Booking.objects.get_or_create(user=customer, complete=False)
 
-    bookingIt, created = BookingItem.objects.get_or_create(booking=booking, event=event)
+    bookingit, created = BookingItem.objects.get_or_create(booking=booking_, event=event)
 
     if action == 'add':
-        bookingIt.quantity = (bookingIt.quantity + 1)
-
-    bookingIt.save()
+        bookingit.quantity = (bookingit.quantity + 1)
+    bookingit.save()
 
 
     return JsonResponse('Booking selected', safe=False)
