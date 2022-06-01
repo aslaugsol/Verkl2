@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from EventDriven.forms.event_form import EventCreateForm, EventUpdateForm
-from EventDriven.models import Event, Category, Cart
+from EventDriven.models import Event, Category, Booking, BookingItem
 import json
 from django.contrib.auth.decorators import login_required
 
@@ -85,7 +85,10 @@ def checkbox_filter(request):
     return render(request, 'events/checkbox.html')
 
 
+def booking(request):
 
+    if request.user.is_authenticated:
+        user = request.user.id
 
 def booking_selected(request):
     data = json.load(request.data)
@@ -94,11 +97,18 @@ def booking_selected(request):
     print('Action: ', action)
     print('EventId: ', event_id)
 
-    customer = request.user.customer
+    customer = request.user.id
     event = Event.objects.get(id=event_id)
-    booking, created = Cart.objects.get_or_create(user=customer, complete=False)
+    booking, created = Booking.objects.get_or_create(user=customer, complete=False)
 
-    #bookingIt, created =
+    bookingIt, created = BookingItem.objects.get_or_create(booking=booking, event=event)
+
+    if action == 'add':
+        bookingIt.quantity = (bookingIt.quantity + 1)
+
+    bookingIt.save()
+
+
     return JsonResponse('Booking selected', safe=False)
 # @login_required
 # def user_profile(request):
