@@ -93,6 +93,12 @@ def booking_selected(request):
     action = data['action']
     print('Action: ', action)
     print('EventId: ', event_id)
+
+    customer = request.user.customer
+    event = Event.objects.get(id=event_id)
+    booking, created = Cart.objects.get_or_create(user=customer, complete=False)
+
+    #bookingIt, created =
     return JsonResponse('Booking selected', safe=False)
 # @login_required
 # def user_profile(request):

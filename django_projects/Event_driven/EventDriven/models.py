@@ -69,3 +69,25 @@ class PaymentInfo(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=255)
     card_number = models.CharField(max_length=255)
+
+
+class Booking(models.Model):
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    complete = models.BooleanField(default=False, null=True, blank=False)
+    transaction_id = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return str(self.id)
+
+
+class BookingItem(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.SET_NULL, blank=True, null=True)
+    booking = models.ForeignKey(Booking, on_delete=models.SET_NULL, blank=True, null=True)
+    quantity = models.IntegerField(
+        default=0,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(0)
+        ]
+     )
+
