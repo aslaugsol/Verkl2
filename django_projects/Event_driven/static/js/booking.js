@@ -33,7 +33,26 @@ for (i = 0; i < Bookingbtn.length ; i++){
         if(user === 'AnonymousUser'){
             console.log('Not logged in!')
         }else{
-            console.log('User is logged in, sending data')
+            UserSelectedBooking(eventID, action)
         }
+    })
+}
+
+function UserSelectedBooking(eventID, action) {
+    console.log('User is logged in, sending data..')
+    var url = '/event_booking/'
+    fetch(url, {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({
+             'eventID':eventID, 'action':action
+        })
+    }).then((response)=> {
+        return response.json()
+    })
+    .then((data)=> {
+        console.log
     })
 }

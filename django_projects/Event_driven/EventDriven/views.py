@@ -107,7 +107,7 @@ def book_event(request, id):
 
     return redirect('/events')
 
-def update_booking(request):
+def booking_selected(request):
     return JsonResponse('Booking selected', safe=False)
 # @login_required
 # def user_profile(request):
