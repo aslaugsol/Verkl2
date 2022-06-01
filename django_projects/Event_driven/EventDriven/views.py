@@ -92,7 +92,7 @@ def booking(request):
         booking, created = Booking.objects.get_or_create(user=customer, complete=False)
         event = booking.bookingitem_set.all()
     else:
-        event = [ ]
+        event = ['']
     context = {'event': event}
     return render(request, 'events.booking.html', context)
 

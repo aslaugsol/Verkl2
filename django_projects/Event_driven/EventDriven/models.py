@@ -90,4 +90,8 @@ class BookingItem(models.Model):
             MinValueValidator(0)
         ]
      )
+    @property
+    def get_total(self):
+        total = self.event.price * self.quantity
+        retur total
 
