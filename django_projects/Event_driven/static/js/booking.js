@@ -44,7 +44,8 @@ function UserSelectedBooking(eventID, action) {
     fetch(url, {
         method:'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
         },
         body:JSON.stringify({
              'eventID': eventID, 'action':action

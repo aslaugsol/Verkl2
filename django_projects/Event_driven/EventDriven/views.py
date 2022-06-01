@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from EventDriven.forms.event_form import EventCreateForm, EventUpdateForm
 from EventDriven.models import Event, Category, Cart
+import json
 from django.contrib.auth.decorators import login_required
 
 
@@ -108,6 +109,11 @@ def book_event(request, id):
     return redirect('/events')
 
 def booking_selected(request):
+    data = json.load(request.data)
+    event_id = data['eventID']
+    action = data['action']
+    print('Action: ', action)
+    print('EventId: ', event_id)
     return JsonResponse('Booking selected', safe=False)
 # @login_required
 # def user_profile(request):
