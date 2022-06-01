@@ -41,13 +41,13 @@ const csrftoken = getToken('csrftoken');
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">EventDriven</a>
+      <a class="navbar-brand" href="{% url 'event-index' %}">EventDriven</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="navbar-brand">About Us</li>
+        <a class="navbar-brand" href="#">About Us</a>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
@@ -68,8 +68,6 @@ const csrftoken = getToken('csrftoken');
         <img src="{{ user.profile.profile_photo }}" class="profile-image"/>
       {% endif %}
       </ul>
-
-
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
