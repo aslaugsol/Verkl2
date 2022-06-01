@@ -90,9 +90,7 @@
 <script src="{% static '/js/events.js' %}"></script>
 <script src="{% static '/js/booking.js' %}"></script>
 <script type="text/javascript">
-
-
-function getCookie(name) {
+    function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');
@@ -110,5 +108,6 @@ function getCookie(name) {
 const csrftoken = getCookie('csrftoken');
 
 </script>
+<script type="text/javascript"> var user = {{ request.user }}</script>
 </body>
 </html>

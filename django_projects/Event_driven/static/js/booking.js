@@ -23,12 +23,12 @@
 //});
 
 var Bookingbtn = document.getElementsByClassName('BookEventBtn')
-for (i = 0; i < Bookingbtn.length ; i++){
+for (let i = 0; i < Bookingbtn.length ; i++){
     Bookingbtn[i].addEventListener('click', function (){
         var eventID = this.dataset.event
         var action = this.dataset.action
         console.log('EventId: ' , eventID , 'Action: ', action)
-        //console.log('USER:', user)
+        console.log('USER:', user)
         if(user === 'AnonymousUser'){
             console.log('Not logged in!')
         }else{
