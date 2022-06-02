@@ -19,7 +19,10 @@
 function getvalues() {
     var selected = document.querySelector('input[name="category"]:checked');
     console.log(":)");
-    console.log(selected.attributes.datacategory.value);
+    var catId = selected.attributes.datacategory.value;
+    console.log(catId);
+    console.log(":)");
+    return catId;
 }
 
 getvalues();

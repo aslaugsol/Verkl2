@@ -1,5 +1,6 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from EventDriven.forms.event_form import EventCreateForm
 from EventDriven.models import Event, Category, Booking, BookingItem, Customer
 import json
@@ -26,6 +27,10 @@ def index(request):
         return JsonResponse({'data': events})
     context = {'events': Event.objects.all().order_by('name'), 'categories': Category.objects.all()}
     return render(request, 'events/indexx.html', context)
+
+def category_events(request, id):
+    context = {'name': Event.object.filter(Q(category_events))}
+    return
 
 
 def get_event_by_id(request, id):
@@ -118,7 +123,11 @@ def booking_selected(request):
     bookingit.save()
     return JsonResponse('Booking selected', safe=False)
 
-
+import json
+def eventFilter(request, id):
+    latest_schedule_update = schedule.objects.all()
+    context = {'latest_schedule_update': json.dumps(latest_schedule_update)}
+    return render(request, 'sessionscheduler.html', context)
 
 
 # @login_required
