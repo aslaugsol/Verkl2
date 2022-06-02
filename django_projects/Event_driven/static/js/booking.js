@@ -44,10 +44,9 @@ function UserSelectedBooking(eventID, action) {
         method:'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json',
             'X-CSRFToken': csrftoken
         },
-        body:JSON.stringify({
+        body: JSON.stringify({
              'eventID': eventID, 'action':action
         })
     }).then((response)=> {
