@@ -21,3 +21,5 @@ function getvalues() {
     console.log(":)");
     console.log(selected.attributes.datacategory.value);
 }
+
+getvalues();
