@@ -26,7 +26,7 @@
     <h3>Categories New</h3>
     <div class="form-check">
         {% for category in categories %} {{ category }}
-            <input class="form-check-input" id="categoryBtn" type="radio" name="category">
+            <input class="form-check-input" id="categoryBtn" type="radio" name="category" dataCategory="{{category.id}}">
         {% endfor %}
         <div class="input-group-btn">
             <button type="submit" id="catSearch1" class="btn btn-default" onclick="getvalues()">Submit</button>
