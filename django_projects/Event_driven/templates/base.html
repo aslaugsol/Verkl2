@@ -31,52 +31,24 @@
 
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="body">
-    <nav class="retro">
+    <nav>
         <a class="navbar-text" href="{% url 'event-index' %}">EventDriven</a>
         <a class="navbar-text" href="#">About us</a>
         <a> <input type="search" class="form-input" id="search-box" placeholder="Search events...">
         <button type="button" id="search-btn" class="button-default">Search</button></a>
         {% if user.is_authenticated %}
-        <a class="navbar-text" href="{% url 'logout' %}">Logout</a></li>
-        <a class="navbar-text" href="{% url 'profile' %}">Profile</a></li>
-        <img src="{{ user.profile.profile_photo }}" class="profile-image" alt="":) />
+        <a class="navbar-text" href="{% url 'logout' %}">Logout</a>
+        <a class="navbar-text" href="{% url 'profile' %}">Profile</a>
+        <img src="{{ user.profile.profile_photo }}" class="profile-image" alt="":)/>
         {% else %}
-        <a class="navbar-text" href="{% url 'login' %}">Login</a></li>
-        <a class="navbar-text" href="{% url 'register' %}">Register</a></li>
+        <a class="navbar-text" href="{% url 'login' %}">Login</a>
+        <a class="navbar-text" href="{% url 'register' %}">Register</a>
         {% endif %}
     </nav>
-    <!--<nav class="navbar">
-        <ul class="nav-container">
-            <ul class="navbar-button">
-              <li><a class="navbar-text" href="{% url 'event-index' %}">EventDriven</a></li>
-            </ul>
-            <ul class="navbar-button">
-                <li><a class="navbar-text" href="#">About us</a></li>
-            </ul>
-            <form class="navbar-form">
-                <div class="form-group">
-                    <input type="search" class="form-input" id="search-box" placeholder="Enter your search here...">
-                </div>
-                <button type="button" id="search-btn" class="button-default">Search</button>
-            </form>
-            </ul>
-            <ul class="navbar-left">
-                {% if user.is_authenticated %}
-                <li><a class="navbar-text" href="{% url 'logout' %}">Logout</a></li>
-                <li><a class="navbar-text" href="{% url 'profile' %}">Profile</a></li>
-                {% else %}
-                <li><a class="navbar-text" href="{% url 'login' %}">Login</a></li>
-                <li><a class="navbar-text" href="{% url 'register' %}">Register</a></li>
-                {% endif %}
-                {% if user.is_authenticated %}
-                <img src="{{ user.profile.profile_photo }}" class="profile-image" alt="":) />
-                {% endif %}
-            </ul>
-        </ul>
-    </nav> -->
-
+    <div class="eventsDiv">
     {% block content %}
     {% endblock %}
+    </div>
 
     <footer>
         <p>&copy; EventDriven. All rights reserved. Address. </p>

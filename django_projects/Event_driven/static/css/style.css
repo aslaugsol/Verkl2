@@ -1,12 +1,107 @@
+body {
+	color: black;
+	transition: .5s;
+	-moz-transition: .5s;
+	-webkit-transition: .5s;
+	-o-transition: .5s;
+	font-family: 'Muli', sans-serif;
+	background-color: grey;
+}
+
 nav {
 	width: 100%;
 	margin-bottom: 2rem;
 	margin-top: 2rem;
 	display: flex;
 	justify-content: space-between;
+	-moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	background-color: white;
 }
 
 .profile-image {
 	height: 3rem;
 	width: 3rem;
+}
+
+nav > * {
+	margin: auto;
+	text-align: center;
+	text-decoration: none;
+	text-align: center;
+  	text-transform: uppercase;
+  	color: #4CAF50;
+}
+
+#search-box {
+	padding: 6px;
+	margin: auto;
+	font-size: 17px;
+	border: none;
+	background-color: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+button {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	line-height: 1;
+	border-radius: 500px;
+	transition-property: background-color, border-color, color, box-shadow, filter;
+	transition-duration: .3s;
+	border: 1px solid transparent;
+	letter-spacing: 2px;
+	white-space: normal;
+	text-align: center;
+	padding: 8px 32px;
+	color: #fff;
+	background-color: #4CAF50;
+}
+
+.events {
+	background-color: white;
+}
+
+.eventsDiv{
+	background-color: white;
+}
+
+.events > * {
+	padding-left: 3%;
+	padding-top: 3%;
+}
+
+.column {
+  	float: left;
+  	width: 50%;
+	background-color: white;
+	height: 140px;
+}
+
+.columnSubDiv {
+	height: 80px;
+}
+
+.columnSubSubElement {
+	height: 40px;
+}
+
+.columnSubSubElement > input {
+	margin: 0px;
+	padding: 0px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
