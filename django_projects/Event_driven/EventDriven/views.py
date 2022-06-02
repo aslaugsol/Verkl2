@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from EventDriven.forms.event_form import EventCreateForm, EventBookingForm
-from EventDriven.models import Event, Category, Booking, Customer
+from EventDriven.models import Event, Category, Booking, Customer, User
 import json
 from django.contrib.auth.decorators import login_required
 
@@ -33,10 +33,12 @@ def get_event_by_id(request, id):
     return render(request, 'events/event_details.html', {
         'event': get_object_or_404(Event, pk=id), 'similar_events': list_of_similar_events})
 
+
 def get_similar_events(id):
     this_event = Event.objects.get(id=id)
     category = this_event.categoryy
     return Event.objects.filter(categoryy=category).exclude(id=id)
+
 
 def create_event(request):
     submitted = False
@@ -57,6 +59,7 @@ def create_event(request):
     return render(request, 'events/create_event.html', {
         'form': form})
 
+
 def delete_event(request, id):
     event = get_object_or_404(Event, pk=id)
     event.delete()
@@ -67,62 +70,29 @@ def checkbox_filter(request):
     selected_values = request.POST.getlist('category')
     return render(request, 'events/checkbox.html')
 
-def booking(request):
-    if request.user.is_authenticated:
-        customer = request.user
-        booking_, created = Booking.objects.get_or_create(customer=customer, complete=False)
-        item = booking_.bookingitem_set.all()
-        bookingitem = booking_.get_events
-    else:
-        item = ['']
-        booking_ = {'get_total': 0, 'get_events': 0}
-        bookingitem = booking_['get_events']
-
-    context = {'event': item, 'booking': booking_, 'bookingItem': bookingitem}
-
-    return render(request, 'events/booking.html', context)
 
 def checkout(request):
     context = {}
     return render(request, 'events/checkout.html', context)
 
 
-def booking_selected(request):
-    data = json.load(request.data)
-    event_id = data['eventID']
-    action = data['action']
-    print('Action: ', action)
-    print('EventId: ', event_id)
-
-    customer = request.user.id
-    event = Event.objects.get(id=event_id)
-    booking_, created = Booking.objects.get_or_create(user=customer, complete=False)
-
-    bookingit, created = BookingItem.objects.get_or_create(booking=booking_, event=event)
-
-    if action == 'add':
-        bookingit.quantity = (bookingit.quantity + 1)
-    bookingit.save()
-    data = JsonResponse('Booking selected', safe=False)
-    return data
-
-
 @login_required
-def boooking(request, event_id):
-    event = get_object_or_404(Event, pk= event_id)
-    user_id = request.user.id
-    user = get_object_or_404(User, pk=user_id)
+def boooking(request):
+    submitted = False
     if request.method == 'POST':
         booking_form = EventBookingForm(data=request.POST)
+
         if booking_form.is_valid():
-            new_booking_form = booking_form.save(commit=False)
-            new_booking_form.event = event
-            new_booking_form.user = user
-            new_booking_form.save()
+            booking_form.save()
 
-            return redirect('/booking/{}/delivery'.format(new_booking_form.pk))
+            return HttpResponseRedirect('/booking?submitted=True')
 
-    return render(request, 'events/booking.html.html', {
+    else:
+        booking_form = EventBookingForm()
+        if 'submitted' in request.GET:
+            submitted = True
+        # TODO: Instance new EventCreateForm()
+    return render(request, 'events/booking.html', {
         'booking_form': booking_form})
 
 # @login_required

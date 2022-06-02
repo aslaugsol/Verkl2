@@ -39,14 +39,11 @@ class EventCreateForm(ModelForm):
 
 
 class EventBookingForm(ModelForm):
-    #image = forms.Charfield(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
-
     class Meta:
         model = Booking
         exclude = ['id']
         widgets = {
-            'event': widgets.TextInput(attrs={'class': 'form-control'}),
-            'customer': widgets.TextInput(attrs={'class': 'form-control'}),
+            'event': widgets.Select(attrs={'class': 'form-control'}),
             'quantity': widgets.NumberInput(attrs={'class': 'form-control'}),
             'delivery': widgets.Select(attrs={'class': 'form-control'}),
         }

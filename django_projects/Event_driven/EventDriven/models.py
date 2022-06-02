@@ -76,9 +76,11 @@ class PaymentInfo(models.Model):
 class Delivery(models.Model):
     choice = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.choice
+
 
 class Booking(models.Model):
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     event = models.ForeignKey(Event, on_delete=models.SET_NULL, blank=True, null=True)
     quantity = models.IntegerField(
         default=0,
