@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from EventDriven.forms.event_form import EventCreateForm, EventBookingForm
+from EventDriven.forms.event_form import EventCreateForm, EventBookingForm, BookingCheckoutForm
 from EventDriven.models import Event, Category, Booking, Customer, User
 import json
 from django.contrib.auth.decorators import login_required
@@ -27,6 +27,7 @@ def index(request):
         return JsonResponse({'data': events})
     context = {'events': Event.objects.all().order_by('name'), 'categories': Category.objects.all()}
     return render(request, 'events/indexx.html', context)
+
 
 def category_events(request, id):
     context = {'name': Event.object.filter(Q(category_events))}
@@ -77,18 +78,36 @@ def checkbox_filter(request):
 
 
 def checkout(request):
-    context = {}
-    return render(request, 'events/checkout.html', context)
+    submitted = False
+    if request.method == 'POST':
+        payment_form = BookingCheckoutForm(data=request.POST)
+
+        if payment_form.is_valid():
+            payment_form.save()
+
+            return HttpResponseRedirect('/checkout?submitted=True')
+
+    else:
+        payment_form = BookingCheckoutForm()
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'events/checkout.html', {
+        'payment_form': payment_form})
+
 
 def confirmation(request):
     context = {'Confirmation': ""}
     return render(request, 'events/confirmation.html', context)
 
+
 import json
+
+
 def eventFilter(request, id):
     latest_schedule_update = schedule.objects.all()
     context = {'latest_schedule_update': json.dumps(latest_schedule_update)}
     return render(request, 'sessionscheduler.html', context)
+
 
 @login_required
 def boooking(request):
@@ -98,14 +117,18 @@ def boooking(request):
 
         if booking_form.is_valid():
             booking_form.save()
-
-            return HttpResponseRedirect('/booking?submitted=True')
+            data = booking_form.cleaned_data
+            choice = data['delivery']
+            print(choice)
+            if choice == 'Get the tickets '+'\n'+'sent with mail using a postal service ':
+                return redirect('/checkout')
+            else:
+                return redirect('/checkout')
 
     else:
         booking_form = EventBookingForm()
         if 'submitted' in request.GET:
             submitted = True
-        # TODO: Instance new EventCreateForm()
     return render(request, 'events/booking.html', {
         'booking_form': booking_form})
 
