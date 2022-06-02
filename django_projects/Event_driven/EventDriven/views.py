@@ -66,12 +66,6 @@ def create_event(request):
         'form': form})
 
 
-def delete_event(request, id):
-    event = get_object_or_404(Event, pk=id)
-    event.delete()
-    return redirect('event-index')
-
-
 def checkbox_filter(request):
     selected_values = request.POST.getlist('category')
     return render(request, 'events/checkbox.html')
