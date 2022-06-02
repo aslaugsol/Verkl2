@@ -73,25 +73,14 @@ class PaymentInfo(models.Model):
     user_name = models.CharField(max_length=255)
     card_number = models.CharField(max_length=255)
 
+class Delivery(models.Model):
+    choice = models.CharField(max_length=255)
+
+
 
 class Booking(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    complete = models.BooleanField(default=False, null=True, blank=False)
-    transaction_id = models.CharField(max_length=200, null=True)
-
-    def __str__(self):
-        return str(self.id)
-
-    @property
-    def get_events(self):
-        event = self.bookingitem_set.all()
-        total = sum(item.quantity for item in event)
-        return total
-
-
-class BookingItem(models.Model):
     event = models.ForeignKey(Event, on_delete=models.SET_NULL, blank=True, null=True)
-    booking = models.ForeignKey(Booking, on_delete=models.SET_NULL, blank=True, null=True)
     quantity = models.IntegerField(
         default=0,
         validators=[
@@ -99,10 +88,8 @@ class BookingItem(models.Model):
             MinValueValidator(0)
         ]
      )
-    @property
-    def get_total(self):
-        total = self.event.price * self.quantity
-        return total
+    delivery = models.ForeignKey(Delivery, on_delete=models.SET_NULL, blank=True, null=True)
 
 
-
+    def __str__(self):
+        return str(self.id)

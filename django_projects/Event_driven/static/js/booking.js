@@ -41,7 +41,6 @@ function UserSelectedBooking(eventID, action) {
     console.log('User is logged in, sending data..')
     let url = 'event_booking'
 
-
     fetch( url, {
         method:'POST',
         headers: {

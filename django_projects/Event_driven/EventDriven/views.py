@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from EventDriven.forms.event_form import EventCreateForm
-from EventDriven.models import Event, Category, Booking, BookingItem, Customer
+from EventDriven.models import Event, Category, Booking, Customer
 import json
 from django.contrib.auth.decorators import login_required
 
@@ -107,6 +107,13 @@ def booking_selected(request):
     return data
 
 
+@login_required
+def boooking(request, event_id):
+    event = get_object_or_404(Event, pk= event_id)
+    user_id = request.user.id
+    user = get_object_or_404(User, pk=user_id)
+    if request.method == 'POST':
+        None
 
 
 # @login_required

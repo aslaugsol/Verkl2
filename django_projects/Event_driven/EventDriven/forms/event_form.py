@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm, widgets
-from EventDriven.models import Event
+from EventDriven.models import Event, Booking
 
 class EventUpdateForm(ModelForm ):
 
@@ -27,6 +27,26 @@ class EventCreateForm(ModelForm):
         widgets = {
             'name': widgets.TextInput(attrs={'class': 'form-control'}),
             'date': widgets.DateInput(attrs={'class': 'form-control'}),
+            'description': widgets.TextInput(attrs={'class': 'form-control'}),
+            'category': widgets.Select(attrs={'class': 'form-control'}),
+            'price': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'max_tickets': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'tickets_available': widgets.NumberInput(attrs={'class': 'form-control'}),
+
+        }
+
+
+
+
+class EventBookingForm(ModelForm):
+    #image = forms.Charfield(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model = Booking
+        exclude = ['id']
+        widgets = {
+            'Event': widgets.TextInput(attrs={'class': 'form-control'}),
+            'User': widgets.TextInput(attrs={'class': 'form-control'}),
             'description': widgets.TextInput(attrs={'class': 'form-control'}),
             'category': widgets.Select(attrs={'class': 'form-control'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control'}),
