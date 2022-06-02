@@ -21,7 +21,6 @@ urlpatterns = [
     path('events/<int:id>', views.get_event_by_id, name='event-detail'),
     path('create_event', views.create_event, name='create_event'),
     path('delete_event/<int:id>', views.delete_event, name='delete_event'),
-    path('update_event/<int:id>', views.update_event, name='update_event'),
     path('user/', include('user.urls')),
     path('event_booking', views.booking_selected, name='update_booking'),
     path('booking', views.booking, name='booking'),

@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from EventDriven.forms.event_form import EventCreateForm, EventUpdateForm
+from EventDriven.forms.event_form import EventCreateForm
 from EventDriven.models import Event, Category, Booking, BookingItem, Customer
 import json
 from django.contrib.auth.decorators import login_required
@@ -39,7 +39,7 @@ def get_similar_events(id):
     return Event.objects.filter(categoryy=category).exclude(id=id)
 
 def create_event(request):
-    submitted = False;
+    submitted = False
     if request.method == 'POST':
         form = EventCreateForm(request.POST)
         print(1)
@@ -84,20 +84,21 @@ def booking(request):
     if request.user.is_authenticated:
         customer = request.user
         booking_, created = Booking.objects.get_or_create(customer=customer, complete=False)
-        event = booking_.bookingitem_set.all()
+        item = booking_.bookingitem_set.all()
         bookingitem = booking_.get_events
     else:
-        event = ['']
-        booking_ = {'get_total':0, 'get_events':0}
+        item = ['']
+        booking_ = {'get_total': 0, 'get_events': 0}
         bookingitem = booking_['get_events']
 
-    context = {'event': event, 'booking': booking_, 'bookingItem': bookingitem}
+    context = {'event': item, 'booking': booking_, 'bookingItem': bookingitem}
 
     return render(request, 'events/booking.html', context)
 
 def checkout(request):
     context = {}
     return render(request, 'events/checkout.html', context)
+
 
 def booking_selected(request):
     data = json.load(request.data)
@@ -115,9 +116,10 @@ def booking_selected(request):
     if action == 'add':
         bookingit.quantity = (bookingit.quantity + 1)
     bookingit.save()
-
-
     return JsonResponse('Booking selected', safe=False)
+
+
+
 # @login_required
 # def user_profile(request):
 #    return render(request, 'user_profile.html', {'user': request.user})
