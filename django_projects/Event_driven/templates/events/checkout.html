@@ -2,4 +2,20 @@
 {% load static %}
 {% block content %}
 <h1>Checkout</h1>
+<form>
+    <h3><label for="address_information">Address information</label><br></h3>
+  <label for="address_information">Full name:</label><br>
+  <input type="text" id="address_information" name="fullname"><br>
+      <label for="address_information">Street name:</label><br>
+  <input type="text" id="address_information" name="streetname"><br>
+          <label for="address_information">House number:</label><br>
+  <input type="text" id="address_information" name="housenum"><br>
+              <label for="address_information">City:</label><br>
+  <input type="text" id="address_information" name="city"><br>
+              <label for="address_information">Country:</label><br>
+  <input type="text" id="address_information" name="country"><br>
+              <label for="address_information">Postal code:</label><br>
+  <input type="text" id="address_information" name="zip"><br>
+
+</form>
 {% endblock %}
