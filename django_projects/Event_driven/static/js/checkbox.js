@@ -17,7 +17,9 @@
     };*/
 
 function getvalues() {
-    var selected = document.querySelector('input[name="category"]:checked').value;
+    var selected = document.querySelector('input[name="category"]:checked');
     console.log(":)");
-    console.log(selected);
+    console.log(selected.attributes.datacategory.value);
 }
+
+getvalues();

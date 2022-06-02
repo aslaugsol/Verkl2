@@ -33,12 +33,10 @@ def get_event_by_id(request, id):
     return render(request, 'events/event_details.html', {
         'event': get_object_or_404(Event, pk=id), 'similar_events': list_of_similar_events})
 
-
 def get_similar_events(id):
     this_event = Event.objects.get(id=id)
     category = this_event.categoryy
     return Event.objects.filter(categoryy=category).exclude(id=id)
-
 
 def create_event(request):
     submitted = False
@@ -59,18 +57,28 @@ def create_event(request):
     return render(request, 'events/create_event.html', {
         'form': form})
 
-
 def delete_event(request, id):
     event = get_object_or_404(Event, pk=id)
     event.delete()
     return redirect('event-index')
 
-
+def update_event(request, id):
+    instance = get_object_or_404(Event, pk=id)
+    if request == 'POST':
+        form = EventUpdateForm(data=request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect(request, 'event-details', id=id)
+    else:
+        form = EventUpdateForm(instance=instance)
+        print(2)
+    return render(request, 'events/update_event.html', {
+        'form': form,
+        'id': id})
 
 def checkbox_filter(request):
     selected_values = request.POST.getlist('category')
     return render(request, 'events/checkbox.html')
-
 
 def booking(request):
     if request.user.is_authenticated:
@@ -86,7 +94,6 @@ def booking(request):
     context = {'event': item, 'booking': booking_, 'bookingItem': bookingitem}
 
     return render(request, 'events/booking.html', context)
-
 
 def checkout(request):
     context = {}
