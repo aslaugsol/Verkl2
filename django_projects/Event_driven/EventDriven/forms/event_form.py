@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm, widgets
-from EventDriven.models import Event
+from EventDriven.models import Event, Booking
+import pycountry
 
 class EventUpdateForm(ModelForm ):
 
@@ -34,3 +35,17 @@ class EventCreateForm(ModelForm):
             'tickets_available': widgets.NumberInput(attrs={'class': 'form-control'}),
 
         }
+
+
+
+
+class EventBookingForm(ModelForm):
+    class Meta:
+        model = Booking
+        exclude = ['id']
+        widgets = {
+            'event': widgets.Select(attrs={'class': 'form-control'}),
+            'quantity': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'delivery': widgets.Select(attrs={'class': 'form-control'}),
+        }
+

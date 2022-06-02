@@ -14,7 +14,7 @@
 
 
 
-    <button class="btn btn-primary me-3 float-start BookEventBtn" data-event="{{ event.id }}" data-action="add">Book event</button>
+    <a href="{% url 'booking' %}" class="block btn-primary">Book event</a>
     <a href="{% url 'delete_event' event.id %}" class="block btn-primary">Delete event</a>
 
 {% endblock %}
