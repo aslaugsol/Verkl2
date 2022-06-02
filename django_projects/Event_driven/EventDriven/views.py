@@ -119,8 +119,7 @@ def boooking(request):
             booking_form.save()
             data = booking_form.cleaned_data
             choice = data['delivery']
-            print(choice)
-            if choice == 'Get the tickets '+'\n'+'sent with mail using a postal service ':
+            if 'postal' in str(choice):
                 return redirect('/checkout')
             else:
                 return redirect('/checkout')
