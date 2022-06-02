@@ -37,8 +37,6 @@ class EventCreateForm(ModelForm):
         }
 
 
-
-
 class EventBookingForm(ModelForm):
     class Meta:
         model = Booking

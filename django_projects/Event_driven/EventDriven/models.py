@@ -1,16 +1,21 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
+from django_countries.fields import CountryField
+
+
 # Create your models here.
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
+
 
 class Event(models.Model):
     name = models.CharField(max_length=255)
@@ -23,7 +28,6 @@ class Event(models.Model):
     tickets_available = models.IntegerField()
     image = models.CharField(max_length=9999, default='')
     location = models.CharField(max_length=255, default='Unknown')
-
 
     def __str__(self):
         return self.name
@@ -42,8 +46,12 @@ class Admin(models.Model):
 
 
 class Address(models.Model):
-    zip = models.IntegerField()
+    full_name = models.CharField(max_length=255)
+    street_name = models.CharField(max_length=255)
+    house_no = models.IntegerField()
+    postal_code = models.IntegerField()
     city = models.CharField(max_length=255)
+    country = CountryField()
 
 
 class Tickets(models.Model):
@@ -60,7 +68,7 @@ class Cart(models.Model):
             MaxValueValidator(10),
             MinValueValidator(1)
         ]
-     )
+    )
 
 
 class Credentials(models.Model):
@@ -69,9 +77,24 @@ class Credentials(models.Model):
 
 
 class PaymentInfo(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=255)
-    card_number = models.CharField(max_length=255)
+    card_number = models.CharField(max_length=16)
+    cvc = models.IntegerField(default=100,
+                              validators=[
+                                  MaxValueValidator(999),
+                                  MinValueValidator(100)
+                              ])
+    expiration_month = models.IntegerField(default=1,
+                                           validators=[
+                                               MaxValueValidator(12),
+                                               MinValueValidator(1)
+                                           ])
+    expiration_year = models.IntegerField(default=2022,
+                                          validators=[
+                                              MaxValueValidator(2022),
+                                              MinValueValidator(2200)
+                                          ])
+
 
 class Delivery(models.Model):
     choice = models.CharField(max_length=255)
@@ -88,9 +111,8 @@ class Booking(models.Model):
             MaxValueValidator(10),
             MinValueValidator(0)
         ]
-     )
+    )
     delivery = models.ForeignKey(Delivery, on_delete=models.SET_NULL, blank=True, null=True)
-
 
     def __str__(self):
         return str(self.id)
