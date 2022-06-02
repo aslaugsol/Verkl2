@@ -8,8 +8,8 @@
    {% url 'booking' %}
         {% csrf_token %}
     {{ booking_form }}
-    <input type="submit" value="Select" class="btn btn-success" > </input>
+    <input type="submit" value="Checkout" class="btn btn-success" > </input>
     </form>
     {% endif %}
-    <a href="{% url 'checkout' %}" class="block btn-primary">Go to checkout</a>
+
 {% endblock %}
