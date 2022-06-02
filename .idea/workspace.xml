@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46423775-e1bf-415d-be49-b53bfb65355a" name="Changes" comment="jj" />
+    <list default="true" id="46423775-e1bf-415d-be49-b53bfb65355a" name="Changes" comment="jj">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_projects/Event_driven/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/django_projects/Event_driven/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_projects/Event_driven/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/django_projects/Event_driven/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_projects/Event_driven/templates/events/indexx.html" beforeDir="false" afterPath="$PROJECT_DIR$/django_projects/Event_driven/templates/events/indexx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_projects/Event_driven/templates/events/single_event.html" beforeDir="false" afterPath="$PROJECT_DIR$/django_projects/Event_driven/templates/events/single_event.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +73,7 @@
       <workItem from="1654080552017" duration="9420000" />
       <workItem from="1654172323301" duration="3403000" />
       <workItem from="1654186580558" duration="2988000" />
-      <workItem from="1654189609498" duration="6144000" />
+      <workItem from="1654189609498" duration="13809000" />
     </task>
     <task id="LOCAL-00001" summary="jj">
       <created>1654020549771</created>

@@ -1,9 +1,9 @@
-.profile-image {
-    width: 5rem;
-    height: 5rem;
+nav-container {
+    display: inline-block;
+    width: 10%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-.event-image {
-    width: 5rem;
-    height: 5rem;
-}
+
