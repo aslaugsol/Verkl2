@@ -62,19 +62,6 @@ def delete_event(request, id):
     event.delete()
     return redirect('event-index')
 
-def update_event(request, id):
-    instance = get_object_or_404(Event, pk=id)
-    if request == 'POST':
-        form = EventUpdateForm(data=request.POST, instance=instance)
-        if form.is_valid():
-            form.save()
-            return redirect(request, 'event-details', id=id)
-    else:
-        form = EventUpdateForm(instance=instance)
-        print(2)
-    return render(request, 'events/update_event.html', {
-        'form': form,
-        'id': id})
 
 def checkbox_filter(request):
     selected_values = request.POST.getlist('category')
@@ -116,7 +103,8 @@ def booking_selected(request):
     if action == 'add':
         bookingit.quantity = (bookingit.quantity + 1)
     bookingit.save()
-    return JsonResponse('Booking selected', safe=False)
+    data = JsonResponse('Booking selected', safe=False)
+    return data
 
 
 

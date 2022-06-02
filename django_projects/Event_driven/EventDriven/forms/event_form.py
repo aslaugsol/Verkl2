@@ -34,3 +34,5 @@ class EventCreateForm(ModelForm):
             'tickets_available': widgets.NumberInput(attrs={'class': 'form-control'}),
 
         }
+
+
