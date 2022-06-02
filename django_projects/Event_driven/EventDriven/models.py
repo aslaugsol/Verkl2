@@ -79,10 +79,10 @@ class Credentials(models.Model):
 class PaymentInfo(models.Model):
     user_name = models.CharField(max_length=255)
     card_number = models.CharField(max_length=16)
-    cvc = models.IntegerField(default=100,
+    cvc = models.IntegerField(default=0,
                               validators=[
                                   MaxValueValidator(999),
-                                  MinValueValidator(100)
+                                  MinValueValidator(0)
                               ])
     expiration_month = models.IntegerField(default=1,
                                            validators=[
@@ -91,8 +91,8 @@ class PaymentInfo(models.Model):
                                            ])
     expiration_year = models.IntegerField(default=2022,
                                           validators=[
-                                              MaxValueValidator(2022),
-                                              MinValueValidator(2200)
+                                              MaxValueValidator(2222),
+                                              MinValueValidator(2022)
                                           ])
 
 
