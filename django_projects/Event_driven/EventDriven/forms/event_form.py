@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm, widgets
 from EventDriven.models import Event, Booking
-import pycountry
+
 
 class EventUpdateForm(ModelForm ):
 

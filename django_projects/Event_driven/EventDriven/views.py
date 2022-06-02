@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from EventDriven.forms.event_form import EventCreateForm, EventBookingForm
-from EventDriven.models import Event, Category, Booking, BookingItem, Customer, User
+from EventDriven.models import Event, Category, Booking, Customer, User
 import json
 from django.contrib.auth.decorators import login_required
 
