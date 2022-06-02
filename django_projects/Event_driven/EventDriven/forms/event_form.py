@@ -45,14 +45,10 @@ class EventBookingForm(ModelForm):
         model = Booking
         exclude = ['id']
         widgets = {
-            'Event': widgets.TextInput(attrs={'class': 'form-control'}),
-            'User': widgets.TextInput(attrs={'class': 'form-control'}),
-            'description': widgets.TextInput(attrs={'class': 'form-control'}),
-            'category': widgets.Select(attrs={'class': 'form-control'}),
-            'price': widgets.NumberInput(attrs={'class': 'form-control'}),
-            'max_tickets': widgets.NumberInput(attrs={'class': 'form-control'}),
-            'tickets_available': widgets.NumberInput(attrs={'class': 'form-control'}),
-
+            'event': widgets.TextInput(attrs={'class': 'form-control'}),
+            'customer': widgets.TextInput(attrs={'class': 'form-control'}),
+            'quantity': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'delivery': widgets.Select(attrs={'class': 'form-control'}),
         }
 
 

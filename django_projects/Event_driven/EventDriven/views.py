@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from EventDriven.forms.event_form import EventCreateForm
+from EventDriven.forms.event_form import EventCreateForm, EventBookingForm
 from EventDriven.models import Event, Category, Booking, Customer
 import json
 from django.contrib.auth.decorators import login_required
@@ -113,8 +113,17 @@ def boooking(request, event_id):
     user_id = request.user.id
     user = get_object_or_404(User, pk=user_id)
     if request.method == 'POST':
-        None
+        booking_form = EventBookingForm(data=request.POST)
+        if booking_form.is_valid():
+            new_booking_form = booking_form.save(commit=False)
+            new_booking_form.event = event
+            new_booking_form.user = user
+            new_booking_form.save()
 
+            return redirect('/booking/{}/delivery'.format(new_booking_form.pk))
+
+    return render(request, 'events/booking.html.html', {
+        'booking_form': booking_form})
 
 # @login_required
 # def user_profile(request):
