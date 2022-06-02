@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if submitted %}
+        Checkout started
+    {% else %}
+
+    <form class="form form-horizontal" method="POST">
+   {% url 'checkout' %}
+        {% csrf_token %}
+    {{ payment_form }}
+    <input type="submit" value="Select" class="btn btn-success" > </input>
+    </form>
+    {% endif %}
+        <input type="text" value="Email" class="btn btn-success"> </input>
+
+    <a href="{% url 'checkout' %}" class="block btn-primary">Pay</a>
+{% endblock %}

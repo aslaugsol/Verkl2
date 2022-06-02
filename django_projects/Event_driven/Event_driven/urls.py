@@ -22,7 +22,9 @@ urlpatterns = [
     path('create_event', views.create_event, name='create_event'),
     path('user/', include('user.urls')),
     path('booking', views.boooking, name='booking'),
-    path('checkout', views.checkout, name='checkout')
+    path('checkout', views.checkout, name='checkout'),
+    path('checkout_address', views.address_checkout, name='checkout-address'),
+    path('checkout_email', views.address_checkout, name='checkout-address'),
     #path('book-tickets/<int:id>', views.book_event, name='book-event'),
     #path('events/search_event', views.index, name='search_event')
     #path("/book-tickets",)

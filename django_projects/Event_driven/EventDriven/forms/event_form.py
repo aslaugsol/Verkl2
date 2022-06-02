@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm, widgets
-from EventDriven.models import Event, Booking, PaymentInfo
+from EventDriven.models import Event, Booking, PaymentInfo, Address, CountryField
 
 
 class EventUpdateForm(ModelForm):
@@ -58,4 +58,18 @@ class BookingCheckoutForm(ModelForm):
             'cvc': widgets.NumberInput(attrs={'class': 'form-control'}),
             'expiration_month': widgets.NumberInput(attrs={'class': 'form-control'}),
             'expiration_year': widgets.NumberInput(attrs={'class': 'form-control'}),
+        }
+
+
+class AddressCheckoutForm(ModelForm):
+    class Meta:
+        model = Address
+        exclude = ['id']
+        widgets = {
+            'full_name': widgets.TextInput(attrs={'class': 'form-control'}),
+            'street_name': widgets.TextInput(attrs={'class': 'form-control'}),
+            'house_no': widgets.TextInput(attrs={'class': 'form-control'}),
+            'postal_code': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'city': widgets.TextInput(attrs={'class': 'form-control'}),
+            'country': widgets.TextInput(attrs={'class': 'form-control'}),
         }

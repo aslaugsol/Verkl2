@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from EventDriven.forms.event_form import EventCreateForm, EventBookingForm, BookingCheckoutForm
+from EventDriven.forms.event_form import EventCreateForm, EventBookingForm, BookingCheckoutForm, AddressCheckoutForm
 from EventDriven.models import Event, Category, Booking, Customer, User
 import json
 from django.contrib.auth.decorators import login_required
@@ -89,6 +89,26 @@ def checkout(request):
         'payment_form': payment_form})
 
 
+def address_checkout(request):
+    submitted = False
+    if request.method == 'POST':
+        payment_form = BookingCheckoutForm(data=request.POST)
+        address_form = AddressCheckoutForm(data=request.POST)
+        if payment_form.is_valid():
+            payment_form.save()
+            if address_form.is_valid():
+                address_form.save()
+
+                return HttpResponseRedirect('/checkout?submitted=True')
+
+    else:
+        payment_form = BookingCheckoutForm()
+        address_form = AddressCheckoutForm()
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'events/checkout_address.html', {
+        'payment_form': payment_form, 'address_form': address_form})
+
 def confirmation(request):
     context = {'Confirmation': ""}
     return render(request, 'events/confirmation.html', context)
@@ -114,7 +134,7 @@ def boooking(request):
             data = booking_form.cleaned_data
             choice = data['delivery']
             if 'postal' in str(choice):
-                return redirect('/checkout')
+                return redirect('/checkout_address')
             else:
                 return redirect('/checkout')
 
