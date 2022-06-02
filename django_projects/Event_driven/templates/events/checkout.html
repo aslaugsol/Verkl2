@@ -17,5 +17,19 @@
               <label for="address_information">Postal code:</label><br>
   <input type="text" id="address_information" name="zip"><br>
 
+    <h3><label for="address_information">Payment information</label><br></h3>
+  <label for="payment">Name of cardholder:</label><br>
+  <input type="text" id="payment" name="cardholder"><br>
+      <label for="payment">Card number:</label><br>
+  <input type="text" id="payment" name="cardnumber"><br>
+          <label for="payment">Expiration date:</label><br>
+  <input type="text" id="payment" name="expiration"><br>
+              <label for="payment">CVC:</label><br>
+  <input type="text" id="payment" name="cvc"><br>
+
 </form>
+
+
+    <a href="{% url 'confirmation' %}" class="block btn-primary">Check out</a>
+
 {% endblock %}

@@ -24,7 +24,9 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('events/event_booking', views.booking_selected, name='update_booking'),
     path('booking', views.booking, name='booking'),
-    path('checkout', views.checkout, name='checkout')
+    path('checkout', views.checkout, name='checkout'),
+    path('confirmation', views.confirmation, name='confirmation')
+
     #path('book-tickets/<int:id>', views.book_event, name='book-event'),
     #path('events/search_event', views.index, name='search_event')
     #path("/book-tickets",)

@@ -86,6 +86,10 @@ def checkout(request):
     context = {}
     return render(request, 'events/checkout.html', context)
 
+def confirmation(request):
+    context = {'Confirmation': ""}
+    return render(request, 'events/confirmation.html', context)
+
 
 def booking_selected(request):
     data = json.load(request.data)
