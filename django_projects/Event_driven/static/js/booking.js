@@ -39,7 +39,7 @@ for (let i = 0; i < Bookingbtn.length ; i++){
 
 function UserSelectedBooking(eventID, action) {
     console.log('User is logged in, sending data..')
-    let url = '/event_booking'
+    let url = '/booking'
     fetch( url, {
         method:'POST',
         headers: {
