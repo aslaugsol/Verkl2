@@ -19,10 +19,19 @@
             </tr>
         </table>
         <div class="input-group-btn">
-            <button type="submit" id="but1" class="btn btn-default" onclick="getvalues()">Submit</button>
+            <button type="submit" id="but1" class="btn btn-default" >Submit</button>
             <b> id="displayvalues" </b>
         </div>
-
+    </div>
+    <h3>Categories New</h3>
+    <div class="form-check">
+        {% for category in categories %} {{ category }}
+            <input class="form-check-input" id="categoryBtn" type="radio" name="category">
+        {% endfor %}
+        <div class="input-group-btn">
+            <button type="submit" id="catSearch1" class="btn btn-default" onclick="getvalues()">Submit</button>
+            <b> id="displayvalues" </b>
+        </div>
     </div>
 
     <div class="events">

@@ -1,4 +1,4 @@
-function getvalues()
+/*function getvalues()
     {
         var selected=new Array();
         var chkbox = document.getElementById("tab1");
@@ -14,4 +14,10 @@ function getvalues()
         {
             document.getElementById("displayvalues").innerHTML=selected;
         }
-    };
+    };*/
+
+function getvalues() {
+    var selected = document.querySelector('input[name="category"]:checked').value;
+    console.log(":)");
+    console.log(selected);
+}
