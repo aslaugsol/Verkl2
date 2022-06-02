@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from EventDriven.forms.event_form import EventCreateForm
-from EventDriven.models import Event, Category, Booking, BookingItem, Customer
+from EventDriven.models import Event, Category, Booking, Customer
 import json
 from django.contrib.auth.decorators import login_required
 
@@ -62,19 +62,6 @@ def delete_event(request, id):
     event.delete()
     return redirect('event-index')
 
-def update_event(request, id):
-    instance = get_object_or_404(Event, pk=id)
-    if request == 'POST':
-        form = EventUpdateForm(data=request.POST, instance=instance)
-        if form.is_valid():
-            form.save()
-            return redirect(request, 'event-details', id=id)
-    else:
-        form = EventUpdateForm(instance=instance)
-        print(2)
-    return render(request, 'events/update_event.html', {
-        'form': form,
-        'id': id})
 
 def checkbox_filter(request):
     selected_values = request.POST.getlist('category')
@@ -116,9 +103,17 @@ def booking_selected(request):
     if action == 'add':
         bookingit.quantity = (bookingit.quantity + 1)
     bookingit.save()
-    return JsonResponse('Booking selected', safe=False)
+    data = JsonResponse('Booking selected', safe=False)
+    return data
 
 
+@login_required
+def boooking(request, event_id):
+    event = get_object_or_404(Event, pk= event_id)
+    user_id = request.user.id
+    user = get_object_or_404(User, pk=user_id)
+    if request.method == 'POST':
+        None
 
 
 # @login_required
