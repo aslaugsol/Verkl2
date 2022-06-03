@@ -30,11 +30,12 @@ def index(request):
 
 def index2(request, string):
     Event.objects.filter(name__icontains=string)
+    context = {}
     return render(request, 'events/indexx.html', context)
 
 
 def category_events(request, id):
-    context = {'name': Event.object.filter(Q(category_events))}
+    context = {'name': Event.object.filter((category_events))}
     return
 
 
@@ -113,15 +114,13 @@ def address_checkout(request):
     return render(request, 'events/checkout_address.html', {
         'payment_form': payment_form, 'address_form': address_form})
 
-def confirmation(request):
+def confirmation_email(request):
     context = {'Confirmation': ""}
-    return render(request, 'events/confirmation.html', context)
+    return render(request, 'events/confirmation_email.html', context)
 
 
-import json
 
-
-def eventFilter(request, id):
+def eventFilter(request, id, schedule=None):
     latest_schedule_update = schedule.objects.all()
     context = {'latest_schedule_update': json.dumps(latest_schedule_update)}
     return render(request, 'sessionscheduler.html', context)
