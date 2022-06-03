@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row">
-    <div class="column">
     <h1>{{ event.name }}</h1>
     <p>Description: {{ event.description }}</p>
     <p>Category: {{ event.categoryy }}</p>
@@ -13,11 +11,7 @@
     <h3>Similar events:</h3>
         <p>{% for event in similar_events %} <a href="/events/{{ event.id }}"> {{ event }} </p> {% endfor %}
             {{ no_events }}
-    </div>
-    <div class="column"></div>
     <p><a href="{% url 'booking' %}" class="block btn-primary">Book event</a></p>
         <p>Image:</p>
     <img src="{{ event.image }}" class="profile-image"/>
-        </div>
-    </div>
 {% endblock %}
