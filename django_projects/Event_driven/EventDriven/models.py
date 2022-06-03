@@ -46,11 +46,8 @@ class Address(models.Model):
     house_no = models.IntegerField()
     postal_code = models.IntegerField()
     city = models.CharField(max_length=255)
-    country = CountryField()
+    country = models.CharField(max_length=255)
 
-#class Credentials(models.Model):
-#    email = models.CharField(max_length=255)
-#    password = models.CharField(max_length=255)
 
 
 class PaymentInfo(models.Model):
