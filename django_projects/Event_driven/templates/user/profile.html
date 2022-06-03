@@ -2,10 +2,11 @@
 {% block content %}
 <div class="profileDiv">
   <h1>Profile</h1>
-  <form class="loginForm" method="post">
+  <form class="profileForm" method="post">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" class="btn btn-primary" value="Update"/>
+    <input type="submit" class="profileBtn" value="Update"/>
+    <img src="{{ user.profile.profile_photo }}" id="profileImg" alt=":)"/>
   </form>
 </div>
 {% endblock %}
