@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="row">
+    <div class="column">
     <h1>{{ event.name }}</h1>
     <p>Description: {{ event.description }}</p>
     <p>Category: {{ event.categoryy }}</p>
-    <p>Image:</p>
-    <img src="{{ event.image }}" class="profile-image"/>
     <p>Location: {{ event.location }}</p>
     <p>Starts: {{ event.start_date }}</p>
     <p>Ends: {{ event.end_date }}</p>
     <p>Price:{{ event.price }}$</p>
     <p>Tickets available:{{ event.tickets_available }}/{{ event.max_tickets }}  </p>
-    <p>List of similar events: {% for event in similar_events %} {{ event }} {% endfor %}</p>
-
-
-
-    <a href="{% url 'booking' %}" class="block btn-primary">Book event</a>
+    <h3>Similar events:</h3>
+        <p>{% for event in similar_events %} <a href="/events/{{ event.id }}"> {{ event }} </p> {% endfor %}
+            {{ no_events }}
+    </div>
+    <div class="column"></div>
+    <p><a href="{% url 'booking' %}" class="block btn-primary">Book event</a></p>
+        <p>Image:</p>
+    <img src="{{ event.image }}" class="profile-image"/>
+        </div>
+    </div>
 {% endblock %}

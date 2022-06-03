@@ -17,7 +17,6 @@ class EventUpdateForm(ModelForm):
 
         }
 
-
 class EventCreateForm(ModelForm):
     # image = forms.Charfield(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
