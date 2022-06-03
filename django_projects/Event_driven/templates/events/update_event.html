@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-{% block content %}
-    <form class="form form-horizontal" method="POST">
-   {% url 'update_event' id %}
-        {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit" class="btn btn-success" > </input>
-    </form>
-{% endblock %}

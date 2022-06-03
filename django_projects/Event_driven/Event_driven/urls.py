@@ -19,7 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('', views.index, name='event-index'),
     path('events/<int:id>', views.get_event_by_id, name='event-detail'),
-    path('create_event', views.create_event, name='create_event'),
     path('user/', include('user.urls')),
     path('booking', views.boooking, name='booking'),
     path('checkout', views.checkout, name='checkout'),
