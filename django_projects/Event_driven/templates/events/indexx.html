@@ -19,11 +19,11 @@
                 <span id="allCategories">All categories</span>
                 <input class="form-check-input" id="categoryBtn" type="radio" name="category" checked="checked" dataCategory="0">
                 {% for category in categories %} {{ category }}
-                    <input class="form-check-input" id="categoryBtn" type="radio" name="category" dataCategory="{{category.id}}">
+                    <input class="form-check-input"  id="categoryBtn" type="radio" name="category" dataCategory="{{category.id}}">
                 {% endfor %}
             </div>
             <div class="input-group-btn">
-                <button type="submit" id="catSearch1" class="btn btn-default" onclick="getvalues()">Submit</button>
+                <button type="submit" id="catSearch1" class="btn btn-default" method = 'POST' onclick="getvalues()">Submit</button>
             </div>
         </div>
     </div>

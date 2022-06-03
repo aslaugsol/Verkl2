@@ -22,9 +22,15 @@ def index(request):
             'category': x.categoryy,
             # 'firstImage': c.eventimage_set.first().image #Þarf að bæta við image model-i
         } for x in Event.objects.all().filter(name__icontains=search_filter)]
-        events = list(Event.objects.filter(name__icontains=search_filter).values())
+        events = list(events.filter(name__icontains=search_filter).values())
         # print(events)
         return JsonResponse({'data': events})
+    if request.method == 'POST':
+        print('Inn if')
+        category_id = request.GET['dataCategory']
+        print(category_id)
+        sel_category_events = category_events(category_id)
+        return JsonResponse({'selected_category_events': sel_category_events})
     context = {'events': Event.objects.all().order_by('name'), 'categories': Category.objects.all()}
     return render(request, 'events/indexx.html', context)
 
@@ -34,9 +40,16 @@ def index2(request, string):
     return render(request, 'events/indexx.html', context)
 
 
-def category_events(request, id):
-    context = {'name': Event.object.filter((category_events))}
-    return
+def category_events(category_id):
+    print(category_id)
+    all_events = Event.objects.all()
+    if category_id == 0:
+        return all_events
+    else:
+        selected_category_events = all_events.filter(categoryy=category_id)
+        print(selected_category_events)
+        return selected_category_events
+
 
 
 def get_event_by_id(request, id):
@@ -84,7 +97,7 @@ def checkout(request):
         if payment_form.is_valid():
             payment_form.save()
 
-            return HttpResponseRedirect('/checkout?submitted=True')
+            return redirect('checkout_email/confirmation_email')
 
     else:
         payment_form = BookingCheckoutForm()
