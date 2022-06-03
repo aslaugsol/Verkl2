@@ -4,10 +4,12 @@
     <div class = "column">
         <h1 class="red">Events</h1>
         <div class="columnSubDiv">
-            <input type="search" class="columnSubSubElement" id="search-box" placeholder="Enter your search here...">
-            <div class="input-group-btn">
-                <button type="button" id="search-btn" class="btn btn-outline-secondary">Search</button>
-            </div>
+             <div class="columnSubSubElement">
+                 <input type="search" class="columnSubSubElement" id="search-box2" placeholder="Enter your search here...">
+             </div>
+             <div class="input-group-btn">
+                 <button type="button" id="search-btn" class="btn btn-outline-secondary">Search</button>
+             </div>
         </div>
     </div>
     <div class="column">
@@ -28,7 +30,7 @@
 </div>
 
 
-    <div class="events" id="eventDiv">
+    <div class="events" id="eventsDiv">
         {% for event in events %}
         {% include 'events/single_event.html' with event=event %}
         {% endfor %}

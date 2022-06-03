@@ -28,6 +28,10 @@ def index(request):
     context = {'events': Event.objects.all().order_by('name'), 'categories': Category.objects.all()}
     return render(request, 'events/indexx.html', context)
 
+def index2(request, string):
+    Event.objects.filter(name__icontains=string)
+    return render(request, 'events/indexx.html', context)
+
 
 def category_events(request, id):
     context = {'name': Event.object.filter(Q(category_events))}

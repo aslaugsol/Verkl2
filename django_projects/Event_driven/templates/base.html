@@ -34,7 +34,7 @@
     <nav>
         <a class="navbar-text" href="{% url 'event-index' %}">EventDriven</a>
         <a class="navbar-text" href="#">About us</a>
-        <a> <input type="search" class="form-input" id="search-box" placeholder="Search events...">
+        <a> <input type="search" class="form-input" id="search-box1" placeholder="Search events...">
         <button type="button" id="search-btn" class="button-default">Search</button></a>
         {% if user.is_authenticated %}
         <a class="navbar-text" href="{% url 'logout' %}">Logout</a>
@@ -45,7 +45,7 @@
         <a class="navbar-text" href="{% url 'register' %}">Register</a>
         {% endif %}
     </nav>
-    <div class="eventsDiv">
+    <div class="bodyDiv">
     {% block content %}
     {% endblock %}
     </div>
@@ -58,8 +58,8 @@
         <a href="tel:xxx-xxxx">
             s:xxx-xxxx
         </a>
-        <a href="terms of use link">Terms of Use</a>
-        <a href="privacy policy link">Privacy Policy</a>
+        <a>Terms of Use</a>
+        <a>Privacy Policy</a>
     </footer>
 
 

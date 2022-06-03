@@ -34,7 +34,7 @@ nav > * {
   	color: #4CAF50;
 }
 
-#search-box {
+#search-box1 {
 	padding: 6px;
 	margin: auto;
 	font-size: 17px;
@@ -70,7 +70,7 @@ button {
 	background-color: white;
 }
 
-.eventsDiv{
+.bodyDiv {
 	background-color: white;
 }
 
@@ -86,17 +86,31 @@ button {
 	height: 140px;
 }
 
+.column h1 {
+	padding-top: 20px;
+	padding-left: 40px;
+}
+
+.column div {
+	padding-left: 20px;
+	padding-bottom: 20px;
+}
+
 .columnSubDiv {
 	height: 80px;
 }
 
 .columnSubSubElement {
 	height: 40px;
+	padding: 10px 0;
 }
 
-.columnSubSubElement > input {
-	margin: 0px;
-	padding: 0px;
+#search-box2 {
+	padding: 6px;
+	margin: auto;
+	font-size: 17px;
+	border: none;
+	background-color: white;
 }
 
 /* Clear floats after the columns */
@@ -104,4 +118,85 @@ button {
   content: "";
   display: table;
   clear: both;
+}
+
+.column, .columnSubDiv {
+	background-color: whitesmoke;
+	padding-bottom: 100px;
+}
+
+.events{
+	padding-top: 5px;
+}
+
+.wellEvent {
+	position: relative;
+	border: 2px solid red;
+	margin-right: 5%;
+	margin-left: 5%;
+	padding: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: whitesmoke;
+}
+
+.wellEvent > * {
+	background-color: whitesmoke;
+}
+
+.loginDiv {
+	top: 160px;
+  	left: 160px;
+  	width: 800px;
+  	min-height: 500px;
+  	height: auto;
+  	position: relative;
+}
+
+.form {
+	width: 640px; /* Can be in percentage also. */
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.loginForm > label, input {
+	padding: 6px;
+	margin: auto;
+	font-size: 17px;
+	border: none;
+	background-color: white;
+}
+
+.button-default {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	line-height: 1;
+	border-radius: 500px;
+	transition-property: background-color, border-color, color, box-shadow, filter;
+	transition-duration: .3s;
+	border: 1px solid transparent;
+	letter-spacing: 2px;
+	white-space: normal;
+	text-align: center;
+	padding: 8px 32px;
+	color: #fff;
+	background-color: #4CAF50;
+}
+
+.loginForm > label, input {
+	padding: 6px;
+	margin: auto;
+	font-size: 17px;
+	border: none;
+	background-color: white;
+}
+
+.profileDiv > * {
+	padding-left: 3%;
+	padding-top: 3%;
 }
