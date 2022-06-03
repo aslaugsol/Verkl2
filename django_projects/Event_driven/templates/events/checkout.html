@@ -3,14 +3,15 @@
     {% if submitted %}
         Checkout started
     {% else %}
-
-    <form class="form form-horizontal" method="POST">
-   {% url 'checkout' %}
+<div class="checkoutDiv">
+    <form class="checkoutForm" method="POST">
         {% csrf_token %}
     {{ payment_form }}
-        <input type="text" value="Email" class="btn btn-success"> </input>
-    <input type="submit" value="Pay" class="btn btn-success" >
+        <label for="emailInput">Email</label>
+        <input type="text" value="" id="emailInput"> </input>
+    <input type="submit" value="Pay" class="checkoutBtn" >
     </form>
+</div>
     {% endif %}
 
 {% endblock %}
