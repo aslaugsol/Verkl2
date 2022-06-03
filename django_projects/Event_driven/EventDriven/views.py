@@ -25,12 +25,12 @@ def index(request):
         events = list(events.filter(name__icontains=search_filter).values())
         # print(events)
         return JsonResponse({'data': events})
-    if request.method == 'POST':
-        print('Inn if')
-        category_id = request.GET['dataCategory']
-        print(category_id)
-        sel_category_events = category_events(category_id)
-        return JsonResponse({'selected_category_events': sel_category_events})
+    #if request.method == 'GET':
+        #print('Inn if')
+        #category_id = request.GET['dataCategory']
+        #print(category_id)
+        #sel_category_events = category_events(category_id)
+        #return JsonResponse({'selected_category_events': sel_category_events})
     context = {'events': Event.objects.all().order_by('name'), 'categories': Category.objects.all()}
     return render(request, 'events/indexx.html', context)
 
@@ -54,7 +54,9 @@ def category_events(category_id):
 
 def get_event_by_id(request, id):
     list_of_similar_events = get_similar_events(id)
-    string = "There are no similar events"
+    string = ""
+    if len(list_of_similar_events) == 0:
+        string += "There are no similar events"
     return render(request, 'events/event_details.html', {
         'event': get_object_or_404(Event, pk=id), 'similar_events': list_of_similar_events, 'no_events': string})
 
