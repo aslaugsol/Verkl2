@@ -7,8 +7,8 @@ $(document).ready(function() {
             type: 'GET',
             success: function(response) {
                 console.log(SearchText);
-                var newHTML = response.data(d => {
-                    return '<div class="well event">\n' +
+                var newHTML = response.data.map(d => {
+                    return '<div class="wellEvent">\n' +
                         '    <a href="/events/${d.id}">\n' +
                         '        <img class="event-img" src="${ d.image }">\n' +
                         '        <h4>${ d.name }</h4>\n' +
