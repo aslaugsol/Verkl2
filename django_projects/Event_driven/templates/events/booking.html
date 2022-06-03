@@ -3,13 +3,13 @@
     {% if submitted %}
         Booking started
     {% else %}
-
-    <form class="form form-horizontal" method="POST">
-   {% url 'booking' %}
+<div class="checkoutDiv"></div>
+    <form class="checkoutForm" method="POST">
         {% csrf_token %}
     {{ booking_form }}
-    <input type="submit" value="Checkout" class="btn btn-success" > </input>
+    <input type="submit" value="Checkout" class="checkoutBtn"> </input>
     </form>
+</div>
     {% endif %}
 
 {% endblock %}

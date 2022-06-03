@@ -297,5 +297,48 @@ button {
 	background-color: #4CAF50;
 	text-align: center;
   	text-transform: uppercase;
+	width: auto;
+}
+
+.checkoutForm {
+	display: flex;
+	flex-direction: column;
+	margin-right: 30%;
+	margin-left: 30%;
+	margin-bottom: 30%;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
+.checkoutForm > label {
+	padding-left: 20%;
+	padding-top: 3%;
+}
+
+.checkoutForm > input, select {
+	width: 20em;
+}
+
+.checkoutBtn {
+	margin-top: 3%;
+	text-decoration: none;
+	margin-bottom: 3%;
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	line-height: 1;
+	border-radius: 500px;
+	transition-property: background-color, border-color, color, box-shadow, filter;
+	transition-duration: .3s;
+	border: 1px solid transparent;
+	letter-spacing: 2px;
+	white-space: normal;
+	text-align: center;
+	padding: 8px 32px;
+	color: white;
+	background-color: #4CAF50;
+	text-align: center;
+  	text-transform: uppercase;
+	width: auto;
 }
 

@@ -100,8 +100,7 @@ def checkout(request):
 
         if payment_form.is_valid():
             payment_form.save()
-
-            return redirect('checkout_email/confirmation_email')
+            return redirect('checkout/confirmation_email')
 
     else:
         payment_form = BookingCheckoutForm()
