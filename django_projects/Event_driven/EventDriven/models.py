@@ -48,9 +48,9 @@ class Address(models.Model):
     city = models.CharField(max_length=255)
     country = CountryField()
 
-class Credentials(models.Model):
-    email = models.CharField(max_length=255)
-    password = models.CharField(max_length=255)
+#class Credentials(models.Model):
+#    email = models.CharField(max_length=255)
+#    password = models.CharField(max_length=255)
 
 
 class PaymentInfo(models.Model):
