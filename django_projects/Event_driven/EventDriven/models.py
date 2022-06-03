@@ -5,11 +5,6 @@ from django_countries.fields import CountryField
 
 
 # Create your models here.
-
-class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-
-
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
@@ -52,24 +47,6 @@ class Address(models.Model):
     postal_code = models.IntegerField()
     city = models.CharField(max_length=255)
     country = CountryField()
-
-
-class Tickets(models.Model):
-    event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
-    name_on_ticket = models.ForeignKey(User, on_delete=models.CASCADE)
-
-
-class Cart(models.Model):
-    event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    total_tickets = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-        ]
-    )
-
 
 class Credentials(models.Model):
     email = models.CharField(max_length=255)

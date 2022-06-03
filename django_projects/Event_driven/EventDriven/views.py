@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from EventDriven.forms.event_form import EventCreateForm, EventBookingForm, BookingCheckoutForm, AddressCheckoutForm
-from EventDriven.models import Event, Category, Booking, Customer, User
+from EventDriven.models import Event, Category, Booking, User
 import json
 from django.contrib.auth.decorators import login_required
 
@@ -23,12 +23,6 @@ def index(request):
         events = list(Event.objects.filter(name__icontains=search_filter).values())
         print(events)
         return JsonResponse({'data': events})
-    #if request.method == 'GET':
-        #print('Inn if')
-        #category_id = request.GET['dataCategory']
-        #print(category_id)
-        #sel_category_events = category_events(category_id)
-        #return JsonResponse({'selected_category_events': sel_category_events})
     context = {'events': Event.objects.all().order_by('name'), 'categories': Category.objects.all()}
     return render(request, 'events/indexx.html', context)
 
@@ -49,7 +43,7 @@ def category_events(category_id):
         return selected_category_events
 
 def about_us(request):
-    about_us_text = "EventDriven is a ticketing company in Iceland, we handle ticket sales for all types of events. EventDriven aims to keep your online ticketing as easy as it can be for all parties. Our employees are experts in ticketing and have set up ticket sales all over the world. Founders are Áslaug Sól Sigurðardóttir, Karítas Etna Elmarsdóttir, Sölvi Karl Einarsson.  They have a Bachelor degree in Engineering from the University of Reykjavík. The website was officially opened on June 3rd  and has been and will be under constant development to meet the needs of both ticket buyers and event promoters. For Event Promoters, please contact info@eventdriven.con for more information check out"
+    about_us_text = "EventDriven is a ticketing company in Iceland, we handle ticket sales for all types of events. EventDriven aims to keep your online ticketing as easy as it can be for all parties. Our employees are experts in ticketing and have set up ticket sales all over the world. Founders are Áslaug Sól Sigurðardóttir, Karítas Etna Elmarsdóttir, Sölvi Karl Einarsson.  They have a Bachelor degree in Engineering from the University of Reykjavík. The website was officially opened on June 3rd  and has been and will be under constant development to meet the needs of both ticket buyers and event promoters. For Event Promoters, please contact info@eventdriven.com."
     return render(request, 'events/about_us.html', {'text': about_us_text})
 
 
@@ -66,26 +60,6 @@ def get_similar_events(id):
     this_event = Event.objects.get(id=id)
     category = this_event.categoryy
     return Event.objects.filter(categoryy=category).exclude(id=id)
-
-
-def create_event(request):
-    submitted = False
-    if request.method == 'POST':
-        form = EventCreateForm(request.POST)
-        print(1)
-        if form.is_valid():
-            print(2)
-            form.save()
-            # event_img = EventImage(image=request.POST['image'], event=event)
-            # event_img.save()
-            return HttpResponseRedirect('/create_event?submitted=True')
-    else:
-        form = EventCreateForm()
-        if 'submitted' in request.GET:
-            submitted = True
-        # TODO: Instance new EventCreateForm()
-    return render(request, 'events/create_event.html', {
-        'form': form})
 
 
 def checkbox_filter(request):
@@ -166,7 +140,3 @@ def boooking(request):
     return render(request, 'events/booking.html', {
         'booking_form': booking_form})
 
-# @login_required
-# def user_profile(request):
-#    return render(request, 'user_profile.html', {'user': request.user})
-# redirectar á /accounts/profile
