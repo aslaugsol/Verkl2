@@ -201,6 +201,11 @@ nav > * {
 	background-color: white;
 }
 
+.detText{
+	margin-right: 3%;
+	text-align: justify;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -249,5 +254,48 @@ button {
 .event-image{
 	height: 300px;
 	width: 300px;
+}
+
+.detailsDiv h1 {
+	padding-left: 3%;
+	padding-top: 3%;
+}
+
+.eventColumn {
+  float: right;
+  width: 49.5%;
+}
+
+/* Clear floats after the columns */
+.detailsDiv:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#eventDetImg {
+	height: 500px;
+	width: 500px;
+}
+
+.bookBtn {
+	text-decoration: none;
+	margin-bottom: 3%;
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	line-height: 1;
+	border-radius: 500px;
+	transition-property: background-color, border-color, color, box-shadow, filter;
+	transition-duration: .3s;
+	border: 1px solid transparent;
+	letter-spacing: 2px;
+	white-space: normal;
+	text-align: center;
+	padding: 8px 32px;
+	color: white;
+	background-color: #4CAF50;
+	text-align: center;
+  	text-transform: uppercase;
 }
 

@@ -1,17 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="detailsDiv">
     <h1>{{ event.name }}</h1>
-    <p>Description: {{ event.description }}</p>
-    <p>Category: {{ event.categoryy }}</p>
-    <p>Location: {{ event.location }}</p>
-    <p>Starts: {{ event.start_date }}</p>
-    <p>Ends: {{ event.end_date }}</p>
-    <p>Price:{{ event.price }}$</p>
-    <p>Tickets available:{{ event.tickets_available }}/{{ event.max_tickets }}  </p>
-    <h3>Similar events:</h3>
-        <p>{% for event in similar_events %} <a href="/events/{{ event.id }}"> {{ event }} </p> {% endfor %}
-            {{ no_events }}
-    <p><a href="{% url 'booking' %}" class="block btn-primary">Book event</a></p>
-        <p>Image:</p>
-    <img src="{{ event.image }}" class="profile-image"/>
+    <div class="eventColumn">
+        <div class="detText">
+            <p>{{ event.description }}</p>
+        </div>
+        <p>Category: {{ event.categoryy }}</p>
+        <p>Location: {{ event.location }}</p>
+        <p>Starts: {{ event.start_date }}</p>
+        <p>Ends: {{ event.end_date }}</p>
+        <p>Price: {{ event.price }}$</p>
+        <p>Tickets available: {{ event.tickets_available }}/{{ event.max_tickets }}  </p>
+
+        <div class="similarEventsDiv">
+        <h3>Similar events:</h3>
+            <p>{% for event in similar_events %} <a href="/events/{{ event.id }}"> {{ event }} </p> {% endfor %}
+                {{ no_events }}
+        </div>
+        <div class="bookEventDiv">
+            <a href="{% url 'booking' %}" class="bookBtn">Book event</a>
+        </div>
+    </div>
+    <div class="eventColumn">
+        <label for="eventDetImg"></label>
+        <img src="{{ event.image }}" class="profile-image" id="eventDetImg"/>
+    </div>
+</div>
 {% endblock %}
