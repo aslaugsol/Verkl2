@@ -48,6 +48,9 @@ def category_events(category_id):
         print(selected_category_events)
         return selected_category_events
 
+def about_us(request):
+    about_us_text = "EventDriven is a ticketing company in Iceland, we handle ticket sales for all types of events. EventDriven aims to keep your online ticketing as easy as it can be for all parties. Our employees are experts in ticketing and have set up ticket sales all over the world. Founders are Áslaug Sól Sigurðardóttir, Karítas Etna Elmarsdóttir, Sölvi Karl Einarsson.  They have a Bachelor degree in Engineering from the University of Reykjavík. The website was officially opened on June 3rd  and has been and will be under constant development to meet the needs of both ticket buyers and event promoters. For Event Promoters, please contact info@eventdriven.con for more information check out"
+    return render(request, 'events/about_us.html', {'text': about_us_text})
 
 
 def get_event_by_id(request, id):

@@ -31,6 +31,7 @@
 
 
     <div class="events" id="eventsDiv">
+
         {% for event in events %}
         {% include 'events/single_event.html' with event=event %}
         {% endfor %}

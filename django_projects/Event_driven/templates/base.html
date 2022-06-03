@@ -33,7 +33,7 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="body">
     <nav>
         <a class="navbar-text" href="{% url 'event-index' %}">EventDriven</a>
-        <a class="navbar-text" href="#">About us</a>
+        <a class="navbar-text" href="{% url 'about_us' %}">About us</a>
         <a> <input type="search" class="form-input" id="search-box1" placeholder="Search events...">
         <button type="button" id="search-btn" class="button-default">Search</button></a>
         {% if user.is_authenticated %}

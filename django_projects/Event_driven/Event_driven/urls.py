@@ -26,4 +26,8 @@ urlpatterns = [
     path('checkout_email', views.address_checkout, name='checkout-address'),
     path('checkout_address/confirmation_address', views.confirmation_address, name='confirmation-address'),
     path('checkout_address/confirmation_email', views.confirmation_email, name='confirmation-email'),
+    path('/aboutus', views.about_us, name='about_us')
+    #path('book-tickets/<int:id>', views.book_event, name='book-event'),
+    #path('events/search_event', views.index, name='search_event')
+    #path("/book-tickets",)
 ]
