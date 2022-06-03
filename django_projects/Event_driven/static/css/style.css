@@ -341,4 +341,8 @@ button {
   	text-transform: uppercase;
 	width: auto;
 }
+.checkoutDiv > #confP {
+	padding-left: 3%;
+	padding-bottom: 3%;
+}
 

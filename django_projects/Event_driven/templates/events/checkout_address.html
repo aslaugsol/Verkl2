@@ -4,11 +4,11 @@
         Checkout started
     {% else %}
 
-    <form class="checkoutForm2" method="POST">
+    <form class="checkoutForm" method="POST">
         {% csrf_token %}
     {{ payment_form }}
         {{ address_form }}
-    <input type="submit" value="Pay" class="checkoutBtn2" > </input>
+    <input type="submit" value="Pay" class="checkoutBtn" > </input>
     </form>
     {% endif %}
     <a href="{% url 'checkout-address' %}" class="block btn-primary">Pay</a>
