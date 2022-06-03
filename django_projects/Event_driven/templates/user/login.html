@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="loginDiv">
+    <h1>Log in</h1>
     <form method="post" class="loginForm">
         {% csrf_token %}
         {{ form }}

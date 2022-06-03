@@ -1,9 +1,9 @@
 $(document).ready(function() {
     $('#search-btn').on('click',function (e) {
         e.preventDefault();
-        var SearchText = $('#search-box').val();
+        var SearchText = $('#search-box2').val();
         $.ajax({
-            url:'/events?search_filter=' + SearchText,
+            url:'/?search_filter=' + SearchText,
             type: 'GET',
             success: function(response) {
                 var newHTML = response.data.map(d => {
@@ -14,7 +14,7 @@ $(document).ready(function() {
                         '        <p>${ d.categoryy }</p>\n' +
                         '    </a>\n' +
                         '</div>'
-                    $('.events').html(newHTML.join(''));
+                    $('').html(newHTML.join(''));
                     $('#search-bar').val('');
                 })
             },

@@ -8,75 +8,9 @@ body {
 	background-color: grey;
 }
 
-nav {
-	width: 100%;
-	margin-bottom: 2rem;
-	margin-top: 2rem;
-	display: flex;
-	justify-content: space-between;
-	-moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
-	-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
-	box-shadow: 1px 2px 3px rgba(0,0,0,.5);
-	background-color: white;
-}
-
-.profile-image {
-	height: 3rem;
-	width: 3rem;
-}
-
-nav > * {
-	margin: auto;
-	text-align: center;
-	text-decoration: none;
-	text-align: center;
-  	text-transform: uppercase;
-  	color: #4CAF50;
-}
-
-#search-box1 {
-	padding: 6px;
-	margin: auto;
-	font-size: 17px;
-	border: none;
-	background-color: white;
-}
-
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-
-button {
-	display: inline-block;
-	outline: none;
-	cursor: pointer;
-	line-height: 1;
-	border-radius: 500px;
-	transition-property: background-color, border-color, color, box-shadow, filter;
-	transition-duration: .3s;
-	border: 1px solid transparent;
-	letter-spacing: 2px;
-	white-space: normal;
-	text-align: center;
-	padding: 8px 32px;
-	color: #fff;
-	background-color: #4CAF50;
-}
-
-.events {
-	background-color: white;
-}
 
 .bodyDiv {
 	background-color: white;
-}
-
-.events > * {
-	padding-left: 3%;
-	padding-top: 3%;
 }
 
 .column {
@@ -125,25 +59,6 @@ button {
 	padding-bottom: 100px;
 }
 
-.events{
-	padding-top: 5px;
-}
-
-.wellEvent {
-	position: relative;
-	border: 2px solid red;
-	margin-right: 5%;
-	margin-left: 5%;
-	padding: 0px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	background-color: whitesmoke;
-}
-
-.wellEvent > * {
-	background-color: whitesmoke;
-}
-
 .loginDiv {
 	top: 160px;
   	left: 160px;
@@ -163,7 +78,7 @@ button {
 	flex-direction: column;
 }
 
-.loginForm > label, input {
+.loginForm > label, input, select {
 	padding: 6px;
 	margin: auto;
 	font-size: 17px;
@@ -188,7 +103,49 @@ button {
 	background-color: #4CAF50;
 }
 
-.loginForm > label, input {
+.profileDiv > * {
+	padding-left: 3%;
+	padding-top: 3%;
+	padding-bottom:50px;
+}
+
+input, select {
+	background-color: whitesmoke;
+}
+
+input.profileBtn {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	line-height: 1;
+	border-radius: 500px;
+	transition-property: background-color, border-color, color, box-shadow, filter;
+	transition-duration: .3s;
+	border: 1px solid transparent;
+	letter-spacing: 2px;
+	white-space: normal;
+	text-align: center;
+	padding: 8px 32px;
+	color: #fff;
+	background-color: #4CAF50;
+}
+
+#profileImg {
+	position: relative;
+	bottom: 110px;
+	float: left;
+	padding: 1px;
+	border: 3px black solid;
+}
+
+
+.registerDiv > * {
+	padding-left: 3%;
+	padding-top: 3%;
+	padding-bottom:50px;
+}
+
+.registerForm > label, input, select {
 	padding: 6px;
 	margin: auto;
 	font-size: 17px;
@@ -196,7 +153,93 @@ button {
 	background-color: white;
 }
 
-.profileDiv > * {
+.registerDiv > * {
 	padding-left: 3%;
 	padding-top: 3%;
+	padding-bottom:50px;
 }
+
+input, select {
+	background-color: whitesmoke;
+}
+
+
+nav {
+	width: 100%;
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+	display: flex;
+	justify-content: space-between;
+	-moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	background-color: white;
+	height: 36px;
+}
+
+.profile-image {
+	height: 3rem;
+	width: 3rem;
+}
+
+nav > * {
+	margin: auto;
+	text-align: center;
+	text-decoration: none;
+	text-align: center;
+  	text-transform: uppercase;
+  	color: #4CAF50;
+}
+
+#search-box1 {
+	padding: 6px;
+	margin: auto;
+	font-size: 17px;
+	border: none;
+	background-color: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+button {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	line-height: 1;
+	border-radius: 500px;
+	transition-property: background-color, border-color, color, box-shadow, filter;
+	transition-duration: .3s;
+	border: 1px solid transparent;
+	letter-spacing: 2px;
+	white-space: normal;
+	text-align: center;
+	padding: 8px 32px;
+	color: #fff;
+	background-color: #4CAF50;
+}
+
+#eventsDiv {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.wellEvent {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.event-image{
+	height: 300px;
+	width: 300px;
+}
+
