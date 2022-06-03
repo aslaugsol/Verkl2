@@ -19,7 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('', views.index, name='event-index'),
     path('events/<int:id>', views.get_event_by_id, name='event-detail'),
-    path('create_event', views.create_event, name='create_event'),
     path('user/', include('user.urls')),
     path('booking', views.boooking, name='booking'),
     path('checkout', views.checkout, name='checkout'),
@@ -27,7 +26,4 @@ urlpatterns = [
     path('checkout_email', views.address_checkout, name='checkout-address'),
     path('checkout_address/confirmation_address', views.confirmation_address, name='confirmation-address'),
     path('checkout_address/confirmation_email', views.confirmation_email, name='confirmation-email'),
-    #path('book-tickets/<int:id>', views.book_event, name='book-event'),
-    #path('events/search_event', views.index, name='search_event')
-    #path("/book-tickets",)
 ]
