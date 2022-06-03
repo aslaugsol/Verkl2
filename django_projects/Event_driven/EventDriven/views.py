@@ -25,12 +25,12 @@ def index(request):
         events = list(events.filter(name__icontains=search_filter).values())
         # print(events)
         return JsonResponse({'data': events})
-    if request.method == 'GET':
-        print('Inn if')
+    #if request.method == 'GET':
+        #print('Inn if')
         #category_id = request.GET['dataCategory']
-        print(category_id)
-        sel_category_events = category_events(category_id)
-        return JsonResponse({'selected_category_events': sel_category_events})
+        #print(category_id)
+        #sel_category_events = category_events(category_id)
+        #return JsonResponse({'selected_category_events': sel_category_events})
     context = {'events': Event.objects.all().order_by('name'), 'categories': Category.objects.all()}
     return render(request, 'events/indexx.html', context)
 
