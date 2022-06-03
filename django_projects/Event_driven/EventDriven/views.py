@@ -52,7 +52,9 @@ def category_events(category_id):
 
 def get_event_by_id(request, id):
     list_of_similar_events = get_similar_events(id)
-    string = "There are no similar events"
+    string = ""
+    if len(list_of_similar_events) == 0:
+        string += "There are no similar events"
     return render(request, 'events/event_details.html', {
         'event': get_object_or_404(Event, pk=id), 'similar_events': list_of_similar_events, 'no_events': string})
 
