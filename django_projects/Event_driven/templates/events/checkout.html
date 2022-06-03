@@ -8,11 +8,11 @@
    {% url 'checkout' %}
         {% csrf_token %}
     {{ payment_form }}
-    <input type="submit" value="Select" class="btn btn-success" >
+        <input type="text" value="Email" class="btn btn-success"> </input>
+    <input type="submit" value="Pay" class="btn btn-success" >
     </form>
     {% endif %}
-     <input type="text" value="Email" class="btn btn-success"> </input>
-    <a href="{% url 'checkout' %}" class="block btn-primary">Pay</a>
+
 {% endblock %}
 
 

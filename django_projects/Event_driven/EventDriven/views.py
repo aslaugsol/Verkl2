@@ -103,8 +103,7 @@ def address_checkout(request):
             payment_form.save()
             if address_form.is_valid():
                 address_form.save()
-
-                return HttpResponseRedirect('/checkout?submitted=True')
+                return redirect('checkout_address/confirmation_address')
 
     else:
         payment_form = BookingCheckoutForm()
@@ -118,7 +117,9 @@ def confirmation_email(request):
     context = {'Confirmation': ""}
     return render(request, 'events/confirmation_email.html', context)
 
-
+def confirmation_address(request):
+    context = {'Confirmation': ""}
+    return render(request, 'events/confirmation_address.html', context)
 
 def eventFilter(request, id, schedule=None):
     latest_schedule_update = schedule.objects.all()
